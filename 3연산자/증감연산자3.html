@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+
+        let a = 3;  let b = 4;
+
+        let c = a++ + ++b + b++ + ++a;
+        //  18=  3     5     5     5 ;
+
+        // c = 18
+        // a = 5
+        // b = 6
+
+        /*
+            1. c = 3 + ++b + b++ + ++a;
+            2. c = 3 +  5  + b++ + ++a;
+            3. c = 3 +  5  +  5  + ++a;
+            4. c = 3 +  5  +  5  +  5 ;
+            5. c = 18;   
+        */
+
+        console.log(c); // 18
+        console.log(a); // 5
+        console.log(b); // 6
+
+    </script>
+
+</body>
+</html>

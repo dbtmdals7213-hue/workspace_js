@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+
+        let a = 10;     let b = 20;     let c = 10;     let f = "20";     let result;
+
+        // a 변수에 저장된 값이 b 변수에 저장된 값보다 더 크냐? 조건식 작성 후
+        // 조건식의 결과 값을 result 변수에 저장
+        result = a > b;     
+        //      10 > 20  -> 거짓
+
+        // result 변수에 저장된 최종 값 console.log 로 출력
+        console.log(result);    // false
+        
+
+        // a 변수에 저장된 값이 b 변수에 저장된 값보다 더 작으냐? 조건식 작성 후
+        // 조건식의 결과 값을 result 변수에 저장
+        result = a < b;     
+        //      10 < 20  -> 참
+
+        // result 변수에 저장된 최종 값 console.log 로 출력
+        console.log(result);    // true
+
+
+        // b 변수에 저장된 값 20 이 f 변수에 저장된 "20" 과 숫자 형태만 같으냐? 조건식 작성후
+        // 조건식의 결과 값을 result 변수에 저장
+        result = b == f;    
+        //      20 == "20"   -> 참
+        
+        // result 변수에 저장된 최종 값 console.log 로 출력
+        console.log(result);    // true
+
+
+        // a 변수에 저장된 값 10 이 b 변수에 저장된 값 20의 숫자형태만 다르냐? 조건식 작성 후
+        // 조건식의 결과 값을 result 변수에 저장
+        result = a != b;    
+        //       10 != 20     -> 참
+
+        // result 변수에 저장된 최종 값 console.log 로 출력
+        console.log(result);    // true
+
+
+        // b 변수에 저장된 20 과 f 변수에 저장된 "20" 이 숫자형태도 같고 자료 형도 정확히 같으냐? 조건식 작성 후
+        // 조건식의 결과 값을 result 변수에 저장
+        result = b === f;   
+        //       20 === "20"  -> 거짓
+
+        // result 변수에 저장된 최종 값 console.log 로 출력
+        console.log(result);    // false
+
+
+        // b 변수에 저장된 20이 f 변수에 저장된 "20" 과 숫자형태 그리고 자료형 모두 다르냐? 조건식 작성 후
+        // 조건식의 결과 값을 result 변수에 저장
+        result = b !== f;   
+        //       20 !== "20"  -> 참
+
+        // result 변수에 저장된 최종 값 console.log 로 출력
+        console.log(result);    // true
+
+    </script>
+
+</body>
+</html>
