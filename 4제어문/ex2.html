@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+
+        /*
+            문제 2: 계절 판별기
+            
+            사용자에게 월을 입력받아 해당 월의 계절을 출력하는 프로그램을 작성하세요.(switch문 활용)
+
+            3 ~ 5: "봄"         <- 출력
+            6 ~ 8: "여름"       <- 출력
+            9 ~ 11: "가을"      <- 출력
+            12, 1, 2: "겨울"    <- 출력
+        */
+        // 순서1. prompt 함수로 현재월을 입력받아 얻습니다.
+        // 순서2. parseInt 함수를 호출할 때 첫 번째 자리에 "7"을 전달하고 두 번째 자리에 변환할 10진수 값 10 전달
+        // 순서3. parseInt 함수가 우리 개발자에게 문자열 "7"을 10진수 숫자 7로 변경해서 되돌려 줌으로서 month 변수에 저장
+        let month = parseInt(prompt("현재 몇월인지 입력하세요!"), 10);
+
+        console.log(month);
+
+        let msg = "";
+
+        switch(month){
+            // month 변수에 저장된 입력한 달이 3또는 4또는 5와 같으냐?
+            case 3: case 4: case 5: // 3 ~ 5월이면?
+                msg = "햇살 가득한 봄이네요!!";
+                break;
+
+            // month 변수에 저장된 입력한 달이 6또는 7또는 8과 같으냐?
+            case 6: case 7: case 8: // 6 ~ 8월이면?
+                msg = "여행 가기 좋은 여름이네요!!";
+                break;
+
+            // month 변수에 저장된 입력한 달이 9또는 10또는 11과 같으냐?
+            case 9: case 10: case 11: // 9 ~ 11월이면?
+                msg = "독서의 계절 가을이네요!!";
+                break;
+
+            // month 변수에 저장된 입력한 달이 12또는 1또는 2와 같으냐?
+            case 12: case 1: case 2: // 12, 1 ~ 2월이면?
+                msg = "스키의 계절 겨울이네요!!";
+                break;
+
+            // 
+            default:
+                msg = "잘못된 데이터를 입력했습니다. <br> 1 ~ 12의 숫자를 입력하세요!!";
+                break;
+        }
+
+        document.write(msg);
+
+    </script>
+
+</body>
+</html>
