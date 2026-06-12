@@ -4,6 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
+    <style>
+        /* 테이블과 셀에 대해 동일한 스타일 적용 */
+        table, td {
+            /* 테이블과 셀의 테두리 선 설정해서 보여주기 */
+            border: 1px solid gray;
+
+            /* 테이블 바깥 테두리 선과 셀의 바깥 테두리를 합쳐서 중복되지 않도록 하기 */
+            border-collapse: collapse;
+        }
+        /* 셀에 대한 추가 스타일 정의 */
+        td{
+            padding: 5px;
+            font-size: 0.9em;   /* 글자 크기를 0.9em 로 설정 */
+        }
+
+    </style>
+
 </head>
 <body>
     <!-- 
@@ -28,6 +46,7 @@
 
         // 전체 줄(행)수를 계산하여 저장할 rowNum 변수 선언
         let rowNum;
+        
         /*
             예를 들어, 전체 입장객 수(memNum)가 10명이고,
             한 줄에 앉을 수 있는 사람 수(colNum)가 4명이라고 가정해 봅시다.
@@ -39,6 +58,7 @@
 
             따라서 rowNum 변수에 저장되는 전체 줄(행) 개수는? 3줄이 됩니다.
         */
+
         /* 전체 줄 수 계산 */
         // 전체 입장객 수를 한 줄에 앉을 수 있는 사람 수로 나누었을 때 나머지가 0이면
         if(memNum % colNum === 0){
@@ -50,7 +70,7 @@
             // 전체 줄 수는 memNum / colNum의 몫에 1을 더한 값이 됩니다.
             // 이는 마지막 줄에 남은 좌석을 위해 한 줄을 더 추가하는 것입니다.
             rowNum = parseInt(memNum / colNum) + 1;
-        }
+        }   // else
 
         /* 테이블 표 생성 */
         document.write("<table>");  // 테이블 표의 시작 태그
@@ -61,18 +81,61 @@
             // 각 줄은 <tr> 태그로 시작됩니다.
             document.write("<tr>");
 
-            // for(){
+            // 안쪽 for 반복문은 한 줄에 앉을 수 있는 사람 수 만큼 반복합니다.
+            for(j = 1; j <= colNum; j++){
+                /*
+                    현재 좌석 번호를 계산
 
+                    첫 번째 줄 (i = 0)
+                        i = 0
+                        j = 1 부터 4가 될 때까지 반복
 
+                        좌석 번호는 아래와 같이 계산된다.
+                        seatNo = 0 * 4 + 1 -> 1
+                        seatNo = 0 * 4 + 2 -> 2
+                        seatNo = 0 * 4 + 3 -> 3
+                        seatNo = 0 * 4 + 4 -> 4
 
-            // }
+                        따라서 첫 번째 줄에는 좌석번호 1, 2, 3, 4 가 배치됨.
+
+                    두 번째 줄(i = 1)
+                        i = 1
+                        j = 1 부터 4가 될 때까지 반복
+
+                        좌석 번호는 아래와 같이 계산된다.
+                        seatNo = 1 * 4 + 1 -> 5
+                        seatNo = 1 * 4 + 2 -> 6
+                        seatNo = 1 * 4 + 3 -> 7
+                        seatNo = 1 * 4 + 4 -> 8
+
+                        따라서 두 번째 줄에는 좌석번호 5, 6, 7, 8 가 배치됨.
+
+                    세 번째 줄(i = 2)
+                        i = 2
+                        j = 1 부터 4가 될 때까지 반복
+
+                        좌석 번호는 아래와 같이 계산된다.
+                        seatNo = 2 * 4 + 1 -> 9
+                        seatNo = 3 * 4 + 2 -> 10
+                        seatNo = 4 * 4 + 3 -> 11
+                        seatNo = 5 * 4 + 4 -> 12
+
+                        따라서 두 번째 줄에는 좌석번호 9, 10, 11, 12 가 배치됨.
+                */
+                let seatNo = i * colNum + j;
+
+                if(seatNo > memNum){
+                    break;
+                }   // if
+                // 현재 좌석 번호를 테이블 셀 <td></td> 사이에 추가해서 보여줍니다.
+                document.write("<td> 좌석" + seatNo + "</td>");
+
+            }   // 안쪽 for
 
 
             // 각 줄은 </tr> 태그로 종료됩니다.
             document.write("</tr>");
-        }
-
-
+        }   // 바깥쪽 for
 
         document.write("</table>"); // 테이블 표의 끝을 알리는 태그
 

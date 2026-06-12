@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 테이블과 셀에 대해 동일한 스타일 적용 */
+        table, td {
+            /* 테이블과 셀의 테두리 선 설정해서 보여주기 */
+            border: 1px solid gray;
+
+            /* 테이블 바깥 테두리 선과 셀의 바깥 테두리를 합쳐서 중복되지 않도록 하기 */
+            border-collapse: collapse;
+        }
+        /* 셀에 대한 추가 스타일 정의 */
+        td{
+            padding: 5px;
+            font-size: 0.9em;   /* 글자 크기를 0.9em 로 설정 */
+        }
+
+    </style>
+</head>
+<body>
+
+    <h1>자리 배치도</h1>
+
+    <script>
+
+        let tn = prompt("총 인원 수");
+        let cn = prompt("가로 줄에 앉을 수 있는 인원 수");
+        let rn;
+
+        if(tn % cn ===0){
+            rn = parseInt(tn / cn);
+        }else{
+            rn = parseInt(tn / cn) + 1;
+        }
+
+        document.write("<table>");
+
+            for(let i = 0; i < cn; i++){
+
+                document.write("<tr>");
+
+                for(let s = 1; s <= cn; s++){
+                    
+                    let sn = i * cn + s;
+                    
+                    if(sn > tn){
+                        break;
+                    }
+
+                    document.write("<td>좌석" + sn + "</td>");
+                }
+
+                document.write("</tr>");
+
+            }
+
+        document.write("</table>");
+
+    </script>
+
+</body>
+</html>
