@@ -43,6 +43,68 @@
         // 반환값 8이 console.log()에 전달되어 출력된다.
         console.log(add(3, 5));     //출력: 8
 
+        // 문제2. 매개변수로 두개의 인수를 전달받아 두 값 중에서 큰 값 하나를 반환하는 max 함수 정의
+        function max(a, b){
+
+            if(a > b){
+                return a;   // 더 큰 값 하나 반환
+            }else{
+                return b;   // 더 큰 값 하나 반환
+            }
+        }
+
+        // max 함수를 호출할 때 인수로 7과 10을 전달해 큰 값 10을 반환받아 console.log 로 출력
+        console.log(max(7, 10));
+
+        // 문제3. 매개변수로 한 개의 숫자를 전달받아 양수이면 true 반환, 음수이면 false 를 반환하는 기능의
+        //        isPositive 함수 정의
+        function isPositive(num){
+            if(num > 0){    // num 매개변수로 전달받은 숫자가 양수이면?
+                return true;
+            }else{  // num 매개변수로 전달받은 숫자가 음수이면?
+                return false;
+            }
+        }
+        // --------------------------------------------------------------------------------------------------------------
+        // isPositive 함수 호출할 때, 인수 5를 매개변수로 전달해서 true 반환받고 console.log 로 출력
+        console.log(isPositive(5));     // 출력: true
+
+        // isPositive 함수 호출할 때, 인수 -2를 매개변수로 전달해서 false 반환받고 console.log 로 출력
+        console.log(isPositive(-2));    // 출력: false
+
+
+        // 문제4. 매개변수로 한 개의 숫자를 전달받아 전달받은 숫자가 짝수이면? true 반환하고,
+        //                                                   홀수이면? false 반환하는 기능의 isEven 함수 정의
+        function isEven(num){
+            return num % 2 === 0;
+        }
+        // --------------------------------------------------------------------------------------------------------------
+        // isEven 함수를 호출할 때 인수 4를 전달해서 true 반환받아 console.log 로 출력
+        console.log(isEven(4));     // 출력: true
+
+        // isEven 함수를 호출할 때 인수 7을 전달해서 false 반환받아 console.log 로 출력
+        console.log(isEven(7));     // 출력: false
+
+
+        // 문제 5. 숫자 1부터 매개변수 n 으로 전달받은 인수 하나의 합을 구하는 기능의 sumUpTo 함수 정의
+        //        기능: 숫자 1부터 매개변수 n 으로 전달받은 인수까지의 합을 계산해서 반환합니다.
+        function sumUpTo(n){
+
+            // 숫자 1부터 n 매개변수로 전달받은 값을 1씩 증가 시키면서 누적해서 저장할 변수 sum 선언
+            let sum = 0;
+
+            // 숫자 1부터 ~ n 매개변수로 전달받은 숫자까지 반복해서 sum 변수에 i 변수값 누적
+            for(let i = 1; i <= n; i++){
+                sum = sum + i;
+            }
+
+            return sum;     // 숫자 1부터 매개변수 n 으로 전달받은 인수까지의 합이 저장된 sum 변수값 반환
+        }
+
+        // sumUpTo 함수 호출할 때 인수 5를 매개변수 n으로 전달해서!
+        // 1 + 2 + 3 + 4 + 5 -> 15를 구해 반환받아 console.log 로 출력
+        console.log(sumUpTo(5));        // 출력: 15
+
     </script>
 
 </body>
