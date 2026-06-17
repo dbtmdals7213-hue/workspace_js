@@ -84,6 +84,54 @@
         console.log(JSON.stringify(book2));
         // {title:"Javascript", author :"김개똥"}
 
+        // let book2 = {title:"Javascript", author :"김개똥"}; <- 현재 객체 모습
+
+        // author: "김개똥" 한 쌍 삭제하기
+        delete book2.author
+
+        // 변경된 객체 확인하기 위해 출력
+        console.log(JSON.stringify(book2));
+        // {title: "Javascript"}
+
+        // ----------------------------------------------------------------------------------------
+
+        /*
+            주제5. 객체 중첩하기({ } 객체 안에 "속성명: 값" 에서 "값" 자리에 { } 객체를 포함시킬 수 있다.)
+
+                {속성명1: 값1, 속성명2: {속성명3: 값3, 속성명4: 값4}}
+                                    :           "값"
+
+                {
+                    속성명1: 값1,
+                    속성명2: {
+                                속성명3: 값3,
+                                속성명4: 값4
+                            }
+
+                }
+        */
+        let student = { // <- 바깥 객체
+                        name: "Doremi",
+                        score: {    // <- 안쪽 객체
+                                history: 85,
+                                science: 94,
+                                avg: function(){    // <- 안쪽 객체의 메소드드
+                                                return (this.history + this.science) / 2
+                                            //  return (     85      +      94     ) / 2
+                                            //  return (            179            ) / 2
+                                            //  return                89.5;
+                                               }
+                               }
+                      }
+
+        // history 속성명과 함께 저장된 85점수 가져오고 싶다.
+        // -> 바깥객체명.바깥객체속성명.안쪽객체의속성명
+        console.log(student.score.history);     // 85
+
+        // history 과목과 science 과목의 평균을 구해서 얻고 싶다.
+        // 방법.    average 메소드 호출하면 된다.
+        // 호출 방법. 바깥객체명.바깥객체속성명.안쪽객체의_메소드명();
+        console.log(student.score.avg());       // 89.5
 
     </script>
 
