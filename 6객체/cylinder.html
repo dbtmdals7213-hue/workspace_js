@@ -21,15 +21,89 @@
                         <input type="text" id = "height" value = "10">
                     </li>
                     <li>
-                        <button>생성자 함수로 계산</button>
+                        <!-- 사이트 이용자가 아래 <button> 을 클릭하는 동작을 등록한다.
+                             클릭 동작 등록하는 방법
+                                -> onclick
+                             클릭 동작 등록 후 기능을 실행하기 위해 함수 호출 방법
+                                -> onclick = "함수명();"    
+                        -->
+                        <button onclick = "calcByConstructor();">생성자 함수로 계산</button>
                     </li>
                     <li>
-                        <button>class로 계산</button>
+                        <button onclick = "calcByClass()">class로 계산</button>
                     </li>
                 </ul>
             </div>
             <div id = "result">결과 출력 영역</div>
         </div>
+
+        <script>
+
+            // 입력창 사용자가 입력한 값을 받아오는 기능의 함수
+            function getInputValues(){
+                // <input type = "text" id = "radius" value = "5"> 에 입력된 반지름 값 얻어 저장
+                
+                    // 순서1. 먼저 <input> 태그 선택해서 가져오기 
+                    // document.querySelector("css 선택자 문법")
+
+                    // 순서2. 선택한 <input> 태그에 value = "5" 중에서 "5" 를 얻는다. 
+                    // document.querySelector("css선택자문법").value;
+
+                let radius = Number(document.querySelector("#radius").value);
+                            // <input type = "text" id = "radius" value = "5">.value -> "5"
+                            //                                                       Number("5"); -> 5
+                //     5
+                console.log(radius);
+                console.log(typeof radius); // number
+
+                // <input type="text" id = "height" value = "10"> 에 설정된 높이 값 10 얻어 변수에 저장
+                let height = Number(document.querySelector("#height").value);
+                //                                     "10"
+                //                              Number("10") -> 10
+                //    10
+                console.log(height);
+                console.log(typeof height); // number
+
+                // <input>에 입력한 높이 값 얻어 저장
+                
+            }
+
+
+            // 일반 함수
+            // "생성자 함수로 계산" <button> 을 클릭했을 때 호출되어 실행되는 함수
+            function calcByConstructor(){
+
+                // <input type="text" id = "radius" value = "5"> 반지름 입력한 값 얻어 변수에 저장
+                let input = getInputValues();
+
+                alert("asdasd");
+
+
+            }
+
+
+            /* 참고. 원기둥 부피 구하는 공식 -> 반지름 * 반지름 * 원주율 * 높이 */
+
+            // 생성자 함수 방식(생성자 함수로 객체 메모리를 만드는 방식)
+            function CylinderConstructor(radius, height){
+
+                this.radius = radius;   // 입력받은 반지름을 객체 메모리의 속성명: 해서 값으로 저장
+                this.height = height;   // 입력받은 높이를 객체 메모리의 속성명: 해서 값으로 저장
+
+                // 부피를 계산해주는 메소드를 객체 메모리에 추가하자
+                this.getVolume = function(){
+                    
+                    // 원기둥 부피 계산해서 반환
+                    //          반지름  *    반지름    *   원주율  *      높이 */
+                    return this.radius * this.radius * 3.141592 * this.height;
+                };
+
+            }
+
+
+
+        </script>
+
         <!--
 
             [1] 작성 문법 - 생성자 함수 작성
