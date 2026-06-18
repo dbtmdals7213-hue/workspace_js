@@ -113,13 +113,24 @@
         */
         //2. 객체 메모리의 참조값(주소번지 0x16)을 다른 변수에 대입
 
-        let bag1 = {color: "blue", whith: 30, height: 50};  // <- 객체 메모리 주소번지 0x16
+        let bag1 = {color: "blue", width: 30, height: 50};  // <- 객체 메모리 주소번지 0x16
     //     |0x16|=
 
         let bag2    = bag1; 
     //  |undefined| = 0x16;
     //     |0x16|
 
+        console.log(JSON.stringify(bag1));  // {color: "blue", width: 30, height: 50}
+        console.log(JSON.stringify(bag2));  // {color: "blue", width: 30, height: 50}
+
+        bag2.color = "red"; // {color: "red", width: 30, height: 50}
+
+        console.log(JSON.stringify(bag1));  // {color: "red", width: 30, height: 50}
+        console.log(JSON.stringify(bag2));  // {color: "red", width: 30, height: 50}
+
+        // 결론: 객체 메모리의 참조값(주소번지)을 다른 참조변수에 대입해서 복사할 경우에는
+        //      일반 원시형 값을 복사하는 것이 아니라
+        //      처음 한 번 생성된 객체메모리의 참조값(주소번지)을 복사한다는 의미.
 
     </script>
 
