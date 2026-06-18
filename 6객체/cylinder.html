@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel = "stylesheet" href = "css/cylinder.css">
+
+</head>
+    <body>
+        <div id = "cotainer">
+            <div id = "userInput">
+                <ul>
+                    <li>
+                        <label for = "radius">반지름</label>
+                        <input type="text" id = "radius" value = "5">
+                    </li>
+                    <li>
+                        <label for = "height">높이</label>
+                        <input type="text" id = "height" value = "10">
+                    </li>
+                    <li>
+                        <button>생성자 함수로 계산</button>
+                    </li>
+                    <li>
+                        <button>class로 계산</button>
+                    </li>
+                </ul>
+            </div>
+            <div id = "result">결과 출력 영역</div>
+        </div>
+        <!--
+
+            [1] 작성 문법 - 생성자 함수 작성
+
+            function 생성자함수명(매개변수1, 매개변수2){
+
+                this.속성명1 = 매개변수1;
+                this.속성명2 = 매개변수2;
+
+                this.메소드명 = function(){
+                    실행할 코드
+                };
+            }
+
+            let 객체참조변수 = new 생성자함수명(값1, 값2);
+        ----------------------------------------------------------
+            [2] 작성 문법 - class 작성
+
+            class 클래스명 {
+
+                constructor(매개변수1, 매개변수2){
+                    this.속성명1 = 매개변수1;
+                    this.속성명2 = 매개변수2;
+                }
+
+                메소드명(){
+                    실행할 코드
+                }
+            }
+
+            let 객체참조변수 = new 클래스명(값1, 값2);
+        ---------------------------------------------------------
+
+            [3] 작성 문법 - 계산 기능을 메소드로 작성
+
+            class Cylinder {
+
+                constructor(radius, height){
+                    this.radius = radius;
+                    this.height = height;
+                }
+
+                getVolume(){
+                    return this.radius * this.radius * Math.PI * this.height;
+                }
+            }
+        ============================================================
+        --> 
+    </body>
+</html>
