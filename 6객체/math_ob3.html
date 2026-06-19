@@ -53,12 +53,14 @@
         // 120 ~ 150 사이의 난수 하나를 정수로 발생!
         let min = 120;  // 최소값
         let max = 150;  // 최대값
-        let result = Math.floor(Math.random() * (max - min + 1) + min);
-        
+        //                      Math.random() * (최대값 - 최소값 + 1)) + 최소값;
+        let result = Math.floor(Math.random() * ( max  -  min  + 1)  +  min);
+        //           Math.floor(     0.8        ( 150  -  120  + 1)  +  120); 
+        //           Math.floor(     0.8        (        31       )  +  120); 
+        //           Math.floor(                24.8                 +  120); 
+        //                                      24                   +  120;   
+
         document.write(result);
-
-
-
 
     </script>
 
