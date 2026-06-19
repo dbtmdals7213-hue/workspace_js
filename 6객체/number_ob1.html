@@ -47,9 +47,20 @@
                     //       30.5       +       40
                     //                 70.5
 
-        
+        /*
+            참고. parseFloat 는 Number 객체 메모리 내부에 만들어져 있는 메소드가 아니라서
+                 parseFloat 함수이다. 함수를 호출해서 사용한 것이다.
+        */
+        // num3 변수에 저장된 "30.5px" 문자열에서 정수 30 숫자만 추출해서 반환
+        document.write(parseInt(num3), "<br>");
+                    //       30
 
-
+        // num3 변수에 저장된 "30.5px" 문자열을 parseInt 함수로 호출할 때 매개변수로 전달하면
+        // 정수 30 숫자로 추출해서 반환하고, num4 변수에 저장된 40과 더해보자
+        // 최종 70이 출력되는지 살펴보자
+        document.write(parseInt(num3) + num4.valueOf() , "<br>");
+                    //       30       +       40
+                    //               70
 
     </script>
 
