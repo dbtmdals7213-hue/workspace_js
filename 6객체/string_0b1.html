@@ -214,7 +214,41 @@
         let str15 = "hello".concat("web");      // -> "helloweb"
         document.write(str15, "<br>");
         
+        //문자의 아스키 코드(ASCII Code) 값이란?
+        //->  컴퓨터가 문자(알파벳, 숫자, 기호 등)를 숫자로 표현하는 표준 체계입니다.
+        //    즉, 각 문자마다 고유한 숫자(아스키 코드 값)가 지정되어 있으며, 
+        //    컴퓨터는 이 숫자를 이용해 문자를 저장하고 처리합니다.
         
+        //제공된     아스키코드표.png 파일 참고
+        
+        //15.  charCodeAt(index) 메소드
+        //    - 전체 문자열에서 매개변수로 전달한 index위치의 문자의 아스키코드값(10진수값) 반환하는 메소드
+        let str16 = "ABC";
+        //			 012  index
+        
+        //  전체 문자열의  0 index 위치에 있는 A문자의 아스키코드값(10진수값) 65를 반환해오고 싶다
+        let result4 = str16.charCodeAt(0);
+        document.write(result4, "<br>");// A -> 65     65 출력
+        
+        //16. fromCharCode(아스키코드값) 메소드
+        //    - 아스키코드값에 해당하는 문자를 반환
+        //    -  문법
+        //			 String.fromCharCode(아스키코드값);
+        
+        //아스키코드값 65에 대응되는 문자 A를 얻고 싶을때  
+        let result5 = String.fromCharCode(65);
+        document.write(result5, "<br>");//A
+        
+        //17. trim() 메소드
+        //    - 전체 문자열에서 앞 뒤 공백 문자열을 제거한후 제거한 전체 문자열 반환
+        //       단 전체 문자열에서 중간 공백이 있더라고 제거하지는 않습니다
+        let str17 = " hell o ";
+        
+        document.write(  str17.length, "<br>");//8
+        
+        document.write(  str17.trim() , "<br>"    );//"hell o"
+        
+        document.write(  str17.trim().length , "<br>"    );//6
 
     </script>
 
