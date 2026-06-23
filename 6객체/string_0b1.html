@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        /*
+            String 객체 메모리란?
+                - 특정 문자열을 저장해놓고, 문자열에서 특정 부분의 문자열을 잘라낸다던지,
+                  특정 문자열을 변경한다던지 등의 문자열을 관리하는 메소드를 가지고 있는 객체 메모리.
+
+                예) "안녕하세요반갑습니다." 전체 문장에서 "반갑습니다." 특정 문자열만 잘라와서 얻을 수 있음.
+
+            String  객체 메모리 생성 방법 2가지
+
+                방법1. "" 또는 '' 기호로 감싸서 "문자열" 형태로 작성하는 방법
+
+                방법2. new String('저장할_특정_문자열'); 형태로 작성하는 방법
+                
+            String 객체 메모리를 생성하면 제공하는 메소드 및 속성들 종류
+
+            1. charAt(index) 메소드
+                - 전체 저장된 문자열에서 특정 문자의 index 번호 위치에 해당하는 문자를 반환하는 메소드
+
+        */
+        let str = "web he she";  // 컴퓨터 RAM 의 특정영역에 "web he she" 문자열 자체를 저장
+                                 // 그리고 그 특정 영역의 주소번지가 str 변수에 저장
+                // 0123456789   <- 각 문자의 위치번호 index
+
+        // String 객체 메모리에 보관된 전체 "web he she" 문자열에서 'b' 문자만 잘라서 얻고 싶다.
+        // 설명: "web he she" 문자열에서 'b' 문자만 잘라서 반환받고 싶을 때
+        //       charAt 메소드 호출 시 인수로 2 index 위치 번호를 전달하면 2 index 위치의 문자 'b' 만 잘라서 반환
+        console.log(str.charAt(2));  // b
+        
+        /*
+            2. indexOf("찾을 문자") 메소드
+                - 전체 문자열에서 왼쪽부터 오른쪽 방향으로 "찾을 문자" 와 일치하는 문자를 찾아
+                  제일 먼저 일치하는 문자의 index 위치 번호를 반환하는 메소드
+                  만약 찾을 문자열이 없으면 -1 을 반환하는 메소드
+            
+            let str = "web he she";
+                       0123456789     <- 각 문자의 위치 번호 index
+        */
+        // 전체 문자열 "web he she" 에서 "he" 단어가 포함되어 있는지 검사하기 위해
+        // indexOf 메소드 호출할 때 "he" 단어를 인수로 전달하면
+        // 전체 문자열에서 왼쪽에서 오른쪽 방향으로 "he" 단어를 검사해서 찾는데
+        // 만약 "he" 가 포함되어 있다면? "he" 의 첫 문자 h 의 index 위치 번호 4 를 반환합니다.
+        document.write(str.indexOf("he"), "<br>");  // 4
+
+        /*
+            3. lastIndexOf("찾을 문자") 메소드
+                - 전체 문자열에서 오른쪽(뒤쪽)에서 왼쪽(앞쪽) 방향으로 찾을 문자를 찾아
+                  제일 먼저 일치하는 문자의 index 위치 번호를 반환하는 메소드
+                  만일 찾을 문자가 없으면 -1 을 반환하는 메소드
+        */
+        let str2 = "web he she he";
+        //          0123456789101112    <- 각 문자의 위치 번호 index
+        //         왼쪽 <----- 오른쪽
+        document.write(str2.lastIndexOf("he"), "<br>");  // "he" 단어에서 h 문자 index 11
+        
+        /*
+            4. match("찾을 문자열") 메소드
+                - 전체 문자열에서 왼쪽에서 찾을 문자열과 일치하는 문자열을 찾아
+                  제일 먼저 찾은 문자열 자체를 반환하는 메소드
+                  만일 찾을 문자열이 전체 문자열에서 포함되어 있지 않으면? null 반환하는 메소드
+        */
+        let str3 = "web he she he";
+        //          0123456789101112    <- 각 문자의 위치 번호 index
+        //         왼쪽 -----> 오른쪽
+        document.write(str3.match("boy"), "<br>");  // null
+        document.write(str3.match("he"), "<br>");   // 찾을 문자열 "he" 가 포함되어 있으므로
+                                                    // "he" 를 찾아 반환해 줍니다.
+        
+        /*
+            5. replace("원본문자열", "변경할새문자열") 메소드
+                - 전체 문자열에서 특정 "원본문자열" 부분만 "변경할새문자열" 로 변경해서 반환하는 메소드
+                  전체문자열의 왼쪽에서 오른쪽 방향으로 변경할 "원본문자열" 을 찾아 변경합니다.
+        */
+        let str4 = "web he she";
+        // 전체 문자열 "web he she" 에서 원본문자열 -> "web" 을 왼쪽에서 오른쪽 방향으로 검사해서 찾으면
+        // 변경할새문자열 -> "html" 로 변경한 후 변경된 전체 문자열 -> "html he she" String 객체 메모리 주소 자체 반환
+        let str5 = str4.replace("web", "html");  // -> "html he she"
+                        // "원본문자열", "변경할새문자열"
+        document.write(str5, "<br>");   // "html he she"
+
+        
+
+    </script>
+
+</body>
+</html>
