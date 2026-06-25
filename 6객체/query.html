@@ -18,24 +18,66 @@
 
         <script>
             /*
-                1. querySelectorAll 메소드 호출 시 class 속성에 부여된 값이 box-1 인 
+                1.  document.getElementsByClassName("box-1") 메소드를 호출하면?
+                    class="box-1" 작성된
+                        <div class="box-1">
+                            <p class="text">text-1</p>
+                            <p class="text">text-2</p>
+                        </div>
+                    배열의 0 index 위치칸에 담아 선택해옵니다.
+            
+                2.  document.getElementsByClassName("box-1")[0] 작성하면?
+                    배열의 0 index 위치칸에 저장된
+                        <div class="box-1">
+                            <p class="text">text-1</p>
+                            <p class="text">text-2</p>
+                        </div>
+                    요소노드 한 쌍을 꺼내옵니다.
+
+                3.  document.getElementsByClassName("box-1")[0].children; 까지 작성하면?
+                    children 속성을 호출하여 <div> 사이에 작성된 모든 자식 p 요소노드들을 배열에 담아서 최종 배열을 반환받습니다.
+                    모습
+                        [<p class="text">text-1</p>, <p class="text">text-2</p>]
+                                      0                          1                <--- index
+            */
+
+            const el2 = document.getElementsByClassName("box-1")[0].children;
+            console.log(el2[0]);
+            console.log(el2[1]);
+            /*
+                getElementByClassName 메소드 + children 속성을 이용해
+
+                <p class="text">text-1</p>
+                <p class="text">text-2</p>
+
+                최종 선택해와서 const el2 상수에 저장
+            */
+
+            /*
+                1. document.querySelector(".box-1");
+
+                    querySelectorAll 메소드 호출 시 class 속성에 부여된 값이 box-1 인 
 
                     <div class="box-1">
                         <p class="text">text-1</p>
                         <p class="text">text-2</p>
                     </div>
 
-                부모 요소노드를 먼저 선택해오되,
-                2. " " 빈공백 하위선택자를 이용해 하위 모든 자식 요소노드들을 선택해 오는데
-                   그 중에서도 class 속성에 부여된 값이 text 인
+                    부모 요소노드를 먼저 선택해오되,
+
+                2. document.querySelectorAll(".box-1 .text");
+
+                        " " 빈공백 하위선택자를 이용해 하위 모든 자식 요소노드들을 선택해 오는데
+                        그 중에서도 class 속성에 부여된 값이 text 인
 
                         <p class="text">text-1</p>
                         <p class="text">text-2</p>
 
-                   자식 요소노드 두 쌍을 모두 NodeList 객체 배열에 담아 최종 NodeList 객체 배열 자체를 반환해줍니다.
+                        자식 요소노드 두 쌍을 모두 NodeList 객체 배열에 담아 최종 NodeList 객체 배열 자체를 반환해줍니다.
             */
             const el3 = document.querySelectorAll(".box-1 .text");
-            console.log(el3);
+            console.log(el3[0]);
+            console.log(el3[1]);
 
             /* 
                 querySelector 메소드 호출 시 class 속성 값이 box-1 인 <div> 요소노드 한 쌍을 선택해서 반환
