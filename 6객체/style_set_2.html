@@ -4,8 +4,60 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
+    <!-- css 문법으로 미리 스타일 정의하기 -->
+    <style>
+        .red-color{
+            color: red;
+        }
+        .fz20{
+            font-size: 20px;
+        }
+    </style>
+
 </head>
-<body>
-    
-</body>
+    <body>
+        <!-- 
+            참고. 자바스크립트 구문으로 class 속성을 조작해 스타일을 적용시킬 수 있다.
+                  선택한 요소노드에 class 속성을 지정할 때(추가, 삭제, 추가와 삭제 반복할 때)
+                  classList 속성의 add(), remove(), toggle() 메소드 사용
+            
+            문법
+                  요소선택.classList.add("class속성값");    // 추가
+                  요소선택.classList.remove("삭제할 class속성에 대한값"); //삭제
+                  요소선택.classList.toggle("없으면 추가할 class속성값 또는 있으면 삭제할 class속성값");// 추가 또는 삭제 
+        -->
+
+        <!-- <p id="text" class="red-color fz20">text</p> -->
+        <p id="text">text</p>
+
+        <script>
+            const pEl = document.querySelector("#text");
+            /*
+                두 줄 작성
+                pEl.classList.add("red-color"); // class="red-color" 추가
+                pEl.classList.add("fz20");      // class="red-color fz20" 까지 추가
+            */
+            // 한 줄 작성해서 class 속성 값 한 번에 추가할 수 있다.
+            pEl.classList.add("red-color", "fz20");
+
+            // 현재 모습 -> <p id="text" class="red-color fz20">text</p> 
+            
+            // 적용된 class 속성에 대한 값을 삭제하고 싶을 때 classList 속성에 remove() 메소드를 사용하자.
+            // 변경된 모습 -> <p id="text" class>text</p> 
+            pEl.classList.remove("red-color", "fz20");
+
+            // 현재 모습 -> <p id="text" class>text</p> 
+
+            // 2초 간격으로 2초 휴식 후 toggle 메소드 실행을 반복해서 하자!
+            window.setInterval(function(){
+                        // 만약 class = red-color 속성값이 부여 되어 있으면 삭제
+                        // 만약 class = red-color 속성값이 부여 되어 있지 않으면 추가
+                pEl.classList.toggle("red-color");
+
+            }, 2000)
+
+        </script>
+
+    </body>
 </html>
