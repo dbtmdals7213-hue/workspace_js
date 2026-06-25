@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+    <body>
+
+        <div class="box-1">
+            <p class="text">text-1</p>
+            <p class="text">text-2</p>
+        </div>
+        <div class="box-2">
+            <p class="text">text-3</p>
+            <p class="text">text-4</p>
+        </div>
+
+        <script>
+            /*
+                1. querySelectorAll 메소드 호출 시 class 속성에 부여된 값이 box-1 인 
+
+                    <div class="box-1">
+                        <p class="text">text-1</p>
+                        <p class="text">text-2</p>
+                    </div>
+
+                부모 요소노드를 먼저 선택해오되,
+                2. " " 빈공백 하위선택자를 이용해 하위 모든 자식 요소노드들을 선택해 오는데
+                   그 중에서도 class 속성에 부여된 값이 text 인
+
+                        <p class="text">text-1</p>
+                        <p class="text">text-2</p>
+
+                   자식 요소노드 두 쌍을 모두 NodeList 객체 배열에 담아 최종 NodeList 객체 배열 자체를 반환해줍니다.
+            */
+            const el3 = document.querySelectorAll(".box-1 .text");
+            console.log(el3);
+
+            /* 
+                querySelector 메소드 호출 시 class 속성 값이 box-1 인 <div> 요소노드 한 쌍을 선택해서 반환
+                <div class="box-1">
+                    <p class="text">text-1</p>
+                    <p class="text">text-2</p>
+                </div>
+            */
+            const el = document.querySelector(".box-1");
+            console.log(el);
+
+        </script>
+
+    </body>
+</html>
