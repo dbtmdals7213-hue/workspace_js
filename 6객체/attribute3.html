@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+    <body>
+        <!-- 
+            메소드로 속성 조작
+            ──────────────────────────────────────────────────────────────
+            메소드                                    설명
+            ──────────────────────────────────────────────────────────────
+            노드.getAttribute("속성명");               해당 속성의 값을 반환
+            노드.setAttribute("속성명", "값");         해당 속성 값 변경/추가
+            노드.removeAttribute("속성명");            해당 속성 삭제
+        -->
+        <a href="#" class="fz20">link</a>
+
+        <script>
+            const aEl = document.querySelector("a");
+            //1. 위 a 요소노드 선택해서 class="fz20" 한 쌍 삭제
+            //  aEl.removeAttribute("class");
+            //  결과 -> <a href="#">link</a>
+
+            //2. 위 1. 에서 선택한 a 요소노드 class="fz20" 한 쌍 중에서 "fz20" 값만 삭제
+            //  힌트) remove 메소드 사용
+            //  aEl.classList.remove("fz20");
+            //  결과 -> <a href="#" class>link</a>
+
+            /*
+                ───────────────────────────────────────────────────────────────────────────────────────────
+                참고.
+                classList 속성과 setAttribute 메소드
+                    - classList 속성으로 class 속성값을 추가하거나 삭제하면
+                      기존 요소가 가지고 있던 class 속상값을 보존하면서 추가하거나 삭제한다는 특징이 있습니다.
+
+                classList 속성과 removeAttribute 메소드
+                    - classList 속성으로 class 속성값을 삭제하면
+                      기존 요소가 가지고 있던 class 속성값을 보존하거나 보존하지 않으면서 삭제한다는 특징이 있습니다.
+                ───────────────────────────────────────────────────────────────────────────────────────────
+            */
+
+            // <a href="#" class="fz20">link</a>
+
+                //1. a 요소노드의 기존 class 속성값 "fz20" 을 보존하면서 class="red-color" 추가
+                //  그림 -> <a href="#" class="fz20 red-color">link</a>
+                //  aEl.classList.add("red-color");
+
+                //2. a 요소노드의 기존 class 속성값 "fz20" 을 보존하지 않고 class 속성값을 red-color 로 변경
+                //  그림 -> <a href="#" class="red-color">link</a>
+                aEl.setAttribute("class", "red-color");
+
+
+        </script>
+        
+    </body>
+</html>

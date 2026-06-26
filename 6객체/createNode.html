@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+    <body>
+        <!-- 
+                                    노드 추가
+            ──────────────────────────────────────────────────────────
+            - 새 노드(객체)를 생성한 뒤, 기존 DOM 트리에 연결(자식으로 추가)
+            ──────────────────────────────────────────────────────────
+            메소드                        설명
+            ──────────────────────────────────────────────────────────
+            createElement()              새로운 요소노드 생성
+            createTextNode()             새로운 텍스트노드 생성
+            createAttribute()            새로운 속성노드 생성
+            appendChild(노드)             마지막 자식으로 추가
+            setAttributeNode(속성노드)    생성한 속성노드를 객체에 연결
+        -->
+
+        <script>
+            //  순서1. <a></a> 요소노드 객체 생성  
+            const aEl = document.createElement("a");
+            //        =   <a></a> 생성해서 반환해줌
+            //  <a></a>
+            
+            //  순서2. <body></body> 부모 요소노드 사이에
+            //        바로 위에서 만든 <a></a> 요소노드를 자식 요소노드로 추가
+            document.body.appendChild(aEl);
+            //  <body></body>.appendChild(<a></a>);
+
+
+        </script>
+
+    </body>
+</html>
