@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+    <body>
+        <form name="frm1">
+            <input type="text" name="userid">
+        </form>
+
+        <form name="frm2">
+            <input type="text" name="username">
+        </form>
+
+        <form name="frm3">
+            <input type="text" name="usernick">
+        </form>
+
+        <script>
+            /*
+                <form> 요소노드를 선택해서 가져오는 방법
+
+                    HTML 문서에 작성된 <form> 은 document 최상위 부모노드 객체를 이용해 선택할 수 있습니다.
+                    2가지 방법으로 <form> 을 선택합니다.
+                        
+                    방법1. <form> 요소의 name 속성값을 이용해 직접 선택하는 방법
+                    방법2. document 객체의 forms 속성을 이용해 선택하는 방법
+            */
+            // ---------------------------------------------------------------------------------------
+            /*
+                <form> 요소노드 선택해서 가져오는 방법1.
+                    -> <form> 요소의 name 속성에 부여된 값을 이용해 <form> 을 선택하는 방법
+                문법
+                    document.form_요소에_설정된_name_속성값;
+                설명
+                    name 속성값이 적힌 <form> 요소 한 쌍을 선택해옵니다.
+            */
+            console.log(document.frm1); // name="frm1" 작성되어 있는 <form name="frm1"> 한 쌍만 선택
+                    
+            console.log(document.frm2); // name="frm2" 작성되어 있는 <form name="frm2"> 한 쌍만 선택
+                
+            console.log(document.frm3); // name="frm3" 작성되어 있는 <form name="frm3"> 한 쌍만 선택
+
+            // ---------------------------------------------------------------------------------------
+
+            /*
+                <form> 요소노드 선택해서 가져오는 방법2.
+                    -> document 객체에서 제공해주는 forms 속성을 이용해 선택하는 방법
+            */
+            const HTMLCollections = document.forms;
+
+            console.log(HTMLCollections[0]);    // <form name = "frm1">...</form>
+
+            console.log(HTMLCollections[1]);    // <form name = "frm2">...</form>
+            
+            console.log(HTMLCollections[2]);    // <form name = "frm3">...</form>
+
+        </script>
+
+    </body>
+</html>
