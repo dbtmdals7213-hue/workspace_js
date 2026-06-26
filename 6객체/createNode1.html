@@ -21,16 +21,49 @@
         -->
 
         <script>
+            /*
+                <body> 요소노드 사이에 자식<a>요소노드를 추가하기 위해
+		        <body> 요소노드를 선택해서 가져와서
+		        방법.  
+		    		부모요소노드명.자식요소노드명
+		    	        -> 자식요소노드 최종 선택해 올수 있다.
+		    		    -> document.body
+            */
+
             //  순서1. <a></a> 요소노드 객체 생성  
             const aEl = document.createElement("a");
             //        =   <a></a> 생성해서 반환해줌
             //  <a></a>
             
-            //  순서2. <body></body> 부모 요소노드 사이에
+            //  순서2. <body> 부모 요소노드 사이에
             //        바로 위에서 만든 <a></a> 요소노드를 자식 요소노드로 추가
             document.body.appendChild(aEl);
-            //  <body></body>.appendChild(<a></a>);
+            
+            
+            // 생성한 <a></a> 요소노드에 추가할 텍스트노드 -> "길벗" 을 만들어서 txtEl 상수에 저장
+            const txtEl = document.createTextNode("길벗");
+            //    "길벗"
+            
+            // 위 동적으로 생성한 <a></a> 요소노드를 선택해서
+            // 동적으로 생성한 "길벗" 텍스트노드를 appendChild 메소드를 호출하여 자식 텍스트노드로 추가
+            document.querySelector("a").appendChild(txtEl);
+            // <a>길벗</a>
 
+            // <a>길벗</a> 요소노드에 추가시킬 href 속성노드를 동적으로 생성
+            const hrefAttr = document.createAttribute("href");
+            //     "href"
+            // <a href>길벗</a>
+
+            // 동적으로 만든 href 속성에 주소값을 저장
+            // 방법
+            //      속성노드명.value = 주소값;
+            hrefAttr.value = "https://www.gilbut.co.kr";
+            // href = "https://www.gilbut.co.kr"
+            
+            // 동적으로 만든 <a>길벗</a> 요소노드 선택해서 가져와
+            // href = "https://www.gilbut.co.kr" 한 쌍을 한 번에 추가
+            document.querySelector("a").setAttributeNode(hrefAttr);
+            // <a href="https://www.gilbut.co.kr">길벗</a>
 
         </script>
 
