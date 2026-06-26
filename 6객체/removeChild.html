@@ -15,11 +15,19 @@
 
             //1. <p>text 1</p> 요소노드 선택 
             const pEl = document.querySelector("p");
+            /*
+                자식_요소노드_명.parentNode
+                    -> 선택한 자식 요소노드 <p>text 1</p> 를 감싸고 있는
+                       부모 요소노드 <body>< /body> 를 최종 선택
+            */
 
-            //2. 
-
+            //2. pEl 상수 메모리에 저장된 자식 요소노드 <p>text 1</p> 를 삭제
+            // 방법. 부모_요소노드_명.removeChild(삭제할_자식_요소노드_명);
+            pEl.parentNode.removeChild(pEl);
+            
+            // 위 1. 2. 두 줄의 코드를 아래와 같이 한 줄로 작성할 수 있다.
+            // document.querySelector("p").pEl.parentNode.removeChild(document.querySelector("p"));
         };
-
     </script>
 
 </head>
@@ -27,6 +35,5 @@
     <p>text 1</p>
     <a href="https://www.gilbut.co.kr">길벗</a>
     <a href="https://www.google.com">구글</a>
-
 </body>
 </html>
