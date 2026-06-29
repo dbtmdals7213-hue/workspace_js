@@ -13,6 +13,8 @@ const button = document.querySelector("button");
         등록한 이벤트 발생 시 처리할 코드;
     };
 
+================================================================
+
     2.  1. 에서 선택한 <button>Click</button> 요소에
         click 이벤트 등록 후 이벤트 처리 
 

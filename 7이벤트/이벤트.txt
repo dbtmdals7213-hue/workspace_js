@@ -93,13 +93,13 @@
                                         (<label>, <select>, <textarea>, <button>태그에서 사용)
 
                 reset                   폼이 리셋되었을때 동작
-                					    <input type="reset" value="다시작성">
+                					              <input type="reset" value="다시작성">
 
                 submit                  <input type="submit" value="전송"> 버튼을 클릭 했을때 동작
 
 
         선택 목록에서 옵션을 선택하면 change이벤트가 발생하고,
-    change이벤트에 displaySelect()이벤트핸들러함수를 연결한 예제.
+        change이벤트에 displaySelect()이벤트핸들러함수를 연결한 예제.
 
         -----------> getForm.html , js/getForm.js , css/getForm.css 
 
