@@ -21,6 +21,9 @@ input{padding:8px 12px;border:2px solid #d9c9a3;border-radius:8px;font-size:1rem
 
 // [1] id가 atkBtn, healBtn, out 인 요소들을 각각 변수에 저장하세요.
 //     작성 공식: let 변수 = document.querySelector("#아이디");
+    let atkBtn = document.querySelector("#atkBtn");
+    let healBtn = document.querySelector("#healBtn");
+    let out = document.querySelector("#out");
 
 // [2] atkBtn 에 클릭 이벤트를 연결하세요.
 //     클릭하면 out 의 글자를 "공격! 50 데미지" 로 바꾸세요.
@@ -28,9 +31,15 @@ input{padding:8px 12px;border:2px solid #d9c9a3;border-radius:8px;font-size:1rem
 //       대상.addEventListener("click", function() {
 //         out.textContent = "공격! 50 데미지";
 //       });
+    atkBtn.addEventListener("click", function(){
+      out.textContent = "공격! 50 데미지";
+    })
 
 // [3] healBtn 에 클릭 이벤트를 연결하세요.
 //     클릭하면 out 의 글자를 "회복! HP +30" 으로 바꾸세요.
+    healBtn.addEventListener("click", function(){
+      out.textContent = "회복! HP +30";
+    })
 
 // 공격/회복 버튼을 누르면 각각 다른 글자가 나오면 성공입니다!
   </script></body></html>
