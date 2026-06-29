@@ -30,11 +30,22 @@
 // [1] id가 score, level, clickBtn, resetBtn, nick, hello 인 요소들을
 //     각각 변수에 저장하세요.
 //     작성 공식: let 변수 = document.querySelector("#아이디");
+    let scoreEl = document.querySelector("#score");
+    let levelEl = document.querySelector("#level");
+    let clickBtn = document.querySelector("#clickBtn");
+    let resetBtn = document.querySelector("#resetBtn");
+    let nick = document.querySelector("#nick");
+    let hello = document.querySelector("#hello");
+
+// -----------------------------------------------------------------------------------------------
 
 // ===== 2단계: 점수 변수 (함수 밖 선언) =====
 
 // [2] 'score' 변수를 만들고 0을 저장하세요. (함수 밖에!)
 //     작성 공식: let 변수 = 0;
+    let score = 0;
+
+// -----------------------------------------------------------------------------------------------
 
 // ===== 3단계: 클릭 이벤트 (점수 증가 + 레벨업 판정) =====
 
@@ -50,12 +61,28 @@
 //           levelEl.textContent = "레벨: 2";
 //         }
 //       });
+    clickBtn.addEventListener("click", function(){
+        score++;
+        scoreEl.textContent = "점수: " + score;
+        if(score >= 10){
+            levelEl.textContent = "레벨: 2";
+        }
+    });
+
+// -----------------------------------------------------------------------------------------------
 
 // ===== 4단계: 리셋 이벤트 (점수 초기화) =====
 
 // [4] resetBtn 에 클릭 이벤트를 연결하세요.
 //     클릭하면 ① score 를 0으로 되돌리고
 //             ② scoreEl 을 "점수: 0", levelEl 을 "레벨: 1" 로 바꾸도록 만드세요.
+    resetBtn.addEventListener("click", function(){
+        score = 0;
+        scoreEl.textContent = "점수: " + score;
+        levelEl.textContent = "레벨: 1";
+    });
+
+// -----------------------------------------------------------------------------------------------
 
 // ===== 5단계: 입력 이벤트 (닉네임 실시간 인사) =====
 
@@ -65,6 +92,9 @@
 //       대상.addEventListener("input", function() {
 //         hello.textContent = nick.value + "님 환영합니다!";
 //       });
+    nick.addEventListener("input", function(){
+        hello.textContent = nick.value + "님 환영합니다!";
+    });
 
 // 완성! 클릭으로 점수 올리고, 10점에 레벨업, 닉네임 입력, 리셋이 모두 되면 성공입니다.
 </script>
