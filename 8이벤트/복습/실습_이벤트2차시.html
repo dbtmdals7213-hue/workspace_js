@@ -20,11 +20,14 @@
 
 // [1] id가 count 인 요소를 선택해 'countEl' 변수에 저장하세요.
 //     작성 공식: let 변수 = document.querySelector("#아이디");
+    let countEl = document.querySelector("#count");
 
 // [2] id가 btn 인 버튼을 선택해 'btn' 변수에 저장하세요.
+    let btn = document.querySelector("#btn");
 
 // [3] 'count' 변수를 만들고 0을 저장하세요. (함수 밖에 선언!)
 //     작성 공식: let 변수 = 0;
+    let count = 0;
 
 // [4] btn 에 클릭 이벤트를 연결하세요.
 //     클릭하면 ① count 를 1 늘리고 ② countEl 의 글자를 count 로 바꾸도록 만드세요.
@@ -33,6 +36,10 @@
 //         count++;
 //         countEl.textContent = count;
 //       });
+    btn.addEventListener("click", function(){
+        count++;
+        countEl.textContent = count;
+    });
 
 // 버튼을 누를 때마다 숫자가 1씩 올라가면 성공입니다!
 </script>

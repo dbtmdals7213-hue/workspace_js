@@ -20,8 +20,10 @@ input{padding:8px 12px;border:2px solid #d9c9a3;border-radius:8px;font-size:1rem
 
 // [1] id가 nameBox 인 입력칸을 선택해 'box' 변수에 저장하세요.
 //     작성 공식: let 변수 = document.querySelector("#아이디");
+  let box = document.querySelector("#nameBox");
 
 // [2] id가 out 인 요소를 선택해 'out' 변수에 저장하세요.
+  let out = document.querySelector("#out");
 
 // [3] box 에 input 이벤트를 연결하세요.
 //     입력할 때마다 out 의 글자를 box.value 로 바꾸세요.
@@ -29,6 +31,9 @@ input{padding:8px 12px;border:2px solid #d9c9a3;border-radius:8px;font-size:1rem
 //       대상.addEventListener("input", function() {
 //         out.textContent = box.value;
 //       });
+  box.addEventListener("input", function(){
+    out.textContent = box.value;
+  });
 
 // 입력칸에 글자를 쳐보세요! 아래에 실시간으로 나타나면 성공입니다.
   </script></body></html>
