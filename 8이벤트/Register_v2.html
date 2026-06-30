@@ -196,6 +196,22 @@
     
     <script type="text/javascript">
 
+        //-------------------------------------------------------------------------------------------
+        const verificationType = {
+
+            NAME: 0,        // 이름 항목 인덱스: 0
+            ID: 1,          // 아이디 항목 인덱스: 1
+            PWD: 2,         // 비밀번호 항목 인덱스: 2
+            PWD_CONFIRM: 3, // 비밀번호 확인(재입력) 인덱스: 3
+            JOB: 4,         // 직업 선택 항목 인덱스: 4
+            GENDER: 5,      // 성별 선택 항목 인덱스: 5
+            HOBBY: 6,       // 취미(체크박스) 항목 인덱스: 6
+            MOTIVATION: 7,  // 가입 동기(textarea) 항목 인덱스: 7
+        };
+        // Object.freeze 메소드는 전달한 객체를 더 이상 수정할 수 없게 만듭니다.
+        // 이렇게 하면 이후 코드에서 누군가 실수로 verificationType 객체의 속성: 값 형태를 변경하는 것을 방지합니다.
+        Object.freeze(verificationType);
+
 
     </script>
 

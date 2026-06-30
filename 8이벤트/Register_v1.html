@@ -253,10 +253,10 @@
                            모든 오류 메세지 내용을 보여주지 않기 위해 class="error-message" 작성된 <span></span> 요소들을 배열에 담아 선택
                            선택한 <span></span> 을 반복해서 텍스트 노드자리에 "" 빈문자열을 설정하자.
                 */
-                document.querySelectorAll(".error-message").forEach(function(){
+                document.querySelectorAll(".error-message").forEach(function(element){
 
                     element.textContent = "";
-                    
+
                 });
 
                 /* 1-2. 모든 입력값이 유요한지 체크할 변수 선언(기본값 true, 만약 오류가 있으면 false 로 바뀌게 됨) */
@@ -291,7 +291,7 @@
                     isValid = false;
 
                 }// -----> showError 함수 중괄호 }
-                /* 1-5. 유효성 검사 -> 이름, 아이디, 비밀번호, 비밀번호 확인, 직업선택, 성별선택, 취미체크, 가입동기 */
+                /* 1-5. 유효성 검사 -> 이름, 아이디, 비밀번호, 비밀번호 확인, 직업 선택, 성별 선택, 취미 체크, 가입 동기 */
                 //1. 이름 유효성 검사
                 if(uName === ""){ // 이름 입력하지 않았느냐?
                     showError("uNameError", "이름을 입력해주세요.");
@@ -302,8 +302,54 @@
                 }else if(uID.length < 3 || uID.length > 7){ // 아이디 3 ~ 7 사이로 입력하지 않았느냐?
                     showError("uIDError", "아이디는 3 ~ 7 자 사이로 입력해주세요.");
                 }
-                
+                //3. 비밀번호 유효성 검사
+                if(uPWD === ""){ // 비밀번호 입력하지 않았느냐?
+                    showError("uPWDError", "비밀번호를 입력해주세요.");
+                }else if(uPWD.length < 4 || uPWD.length > 10){ // 비밀번호 입력이 4 ~ 10 사이로 입력하지 않았느냐?
+                    showError("uPWDError", "비밀번호는 4 ~ 10 자 사이로 입력해주세요.");
+                }
+                //4. 비밀번호 확인 유효성 검사
+                if(uPWDConfirm === ""){ // 비밀번호 확인 입력란에 입력하지 않았느냐?
+                    showError("uPWDConfirmError", "비밀번호 확인 입력란 입력해주세요.");
+                }else if(uPWD !== uPWDConfirm){ // 입력한 비밀번호와 입력한 비밀번호 확인 내용이 다르냐? 
+                    showError("uPWDConfirmError", "두 비밀번호가 일치하지 않습니다.");
+                }
+                //5. 직업 선택 확인 유효성 검사
+                if(work === ""){ // 직업 option 3개 중 하나라도 선택하지 않았느냐?
+                    showError("workError", "직업을 선택해주세요.");
+                }
+                //6. 성별 라디오 버튼 확인 유효성 검사
+                if(!sex){ // 성별 라디오 버튼 2개 중 하나라도 선택하지 않았느냐?
+                    showError("sexError", "성별을 선택해주세요.");
+                }
+                //7. 취미 체크 박스들 중에 하나 이상 체크했는지 확인 유효성 검사
+                //참고. hobbies 상수는 사용자가 체크한 취미 체크 박스들만 hobbies 상수 배열에 저장합니다.
+                //     사용자가 아무것도 체크하지 않으면? hobbies.length 값은 0이 됩니다.
+                if(hobbies.length === 0){ // 취미 체크 박스가 하나라도 체크되지 않았느냐?
+                    showError("hobbyError", "취미를 최소 하나 이상 체크해주세요.");
+                }
+                //8. 가입 동기 입력 유효성
+                if(motivation === ""){ // 가입 동기 입력하지 않았느냐?
+                    showError("motivationError", "가입 동기를 입력해주세요.");
+                }
+                //9. 모든 입력 요소에 입력한 값들이 유효한지 확인
+                // 방법: isValid 플래그 변수 값 true 인지 확인 
+                if(isValid){ // 모든 입력 요소에 입력된 값이 유효하면?
+                    alert('회원가입 요청(톰캣 서버가 실행할 a.jsp 서버페이지)이 정상적으로 처리됩니다.');
 
+                    // this 예약어: submit 이벤트가 발생한 <form action="a.jsp">...</form> DO 를 가리키는 예약어.
+                    this.submit();
+                    /*
+                        위 작성된 
+                        <form id="..." action="a.jsp"
+                            입력 요소들
+
+                            <button type="submit">가입</button>
+                        </form>
+                        의 action 속성에 작성된 a.jsp 서버페이지로 입력한 가입 정보들을 request 내장 객체 메모리에 담아 전송 시 전달합니다.
+                        요약: 회원가입 요청합니다.
+                    */
+                }
 
             });
 
