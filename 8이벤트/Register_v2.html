@@ -342,9 +342,9 @@
 
         // 이벤트 핸들러 함수 validateID 정의
         // 기능: 아이디를 입력했는지 검사, 아이디 입력 시 3 ~ 7 자 사이로 입력 안했는지 검사, 제대로 둘 다 입력했는지 검사
-        function validateID(){ // 아이디를 입력하지 않았다면?
+        function validateID(){ 
             
-            if(inputId.value.trim() === ""){
+            if(inputId.value.trim() === ""){ // 아이디를 입력하지 않았다면?
                 idError.innerText = "아이디를 입력해주세요.";
                 checkVerifications[verificationType.ID] = false;
             //  checkVerifications[         1         ] = false;
@@ -360,35 +360,120 @@
 
         // -------------------- 비밀번호 유효성 검사 --------------------
         // 비밀번호 입력할 수 있는 <input> 요소와 해당 오류 메세지 보여줄 <span> 을 각각 선택해서 가져온다
-        const inputPwd = document.getElementById();
-        const pwdError = document.getElementById();
+        const inputPwd = document.getElementById("uPWD");
+        const pwdError = document.getElementById("pwd");
 
         // 비밀번호 입력할 수 있는 <input> 요소에 keyup 이벤트 등록 후 처리
-        inputPwd.addEventListener("keyup", validdatePwd);
+        inputPwd.addEventListener("keyup", validatePwd);
 
-        function(){
+        function validatePwd(){
         
             if(inputPwd.value.trim() === ""){
-            // 처리내용1. 비밀번호 입력하지 않았는지 검사 후 입력하지 않았으면? <span> 사이에 "비밀번호를 입력해주세요." 보여준다.
-            //           그리고 checkVerifications 배열의 2 index 칸에 false 저장
+                // 처리내용1. 비밀번호 입력하지 않았는지 검사 후 입력하지 않았으면? <span> 사이에 "비밀번호를 입력해주세요." 보여준다.
+                //           그리고 checkVerifications 배열의 2 index 칸에 false 저장
                 pwdError.innerText = "비밀번호를 입력해주세요.";
                 checkVerifications[verificationType.PWD] = false;
             }else if(inputPwd.value.trim().length < 4 || inputPwd.value.trim().length > 10){
-        // 처리내용2. 비밀번호가 4 ~ 10자 사이로 입력하지 않았다면? <span> 사이에 "비밀번호는 4 ~ 10 자 사이로 입력해주세요." 보여준다.
-        //           그리고 checkVerifications 배열의 2 index 칸에 false 저장
-                pwdError.innerText = "비밀번호는 4 ~ 10 자 사이로 입력해주세요."
+                // 처리내용2. 비밀번호가 4 ~ 10자 사이로 입력하지 않았다면? <span> 사이에 "비밀번호는 4 ~ 10 자 사이로 입력해주세요." 보여준다.
+                //           그리고 checkVerifications 배열의 2 index 칸에 false 저장
+                pwdError.innerText = "비밀번호는 4 ~ 10 자 사이로 입력해주세요.";
                 checkVerifications[verificationType.PWD] = false;
             }else{
-        // 처리내용3. 처리내용1 과 처리내용2 의 모든 조건이 성립한다면? <span> 사이에 "" 넣어서 오류 메세지 제거해서 보여준다.
-        //           그리고 checkVerifications 배열의 2 index 칸에 true 저장
-                pwdError.innerText = "";
+                // 처리내용3. 처리내용1 과 처리내용2 의 모든 조건이 성립한다면? <span> 사이에 "" 넣어서 오류 메세지 제거해서 보여준다.
+                //           그리고 checkVerifications 배열의 2 index 칸에 true 저장
+                pwdError.innerText = "";    // 정상적으로 비밀번호를 입력했으니 오류 메세지 제거를 위해 "" 넣어 보여준다.
                 checkVerifications[verificationType.PWD] = true;
             }
         }
 
+        // -------------------- 비밀번호 재입력(확인) 유효성 검사 --------------------
+        // 비밀번호 확인 입력창 input 과 오류 메세지 보여줄 <span> 요소를 선택해서 가져온다.
+        const inputPwdConfirm = document.getElementById("uPWD_Confirm");
+        const pwdConfirmError = document.getElementById("pwd_confirm");
+
+        // 비밀번호 확인 입력창 input 에 keyup 이벤트 등록 후 처리
+        inputPwdConfirm.addEventListener("keyup", () => {
+
+            if(inputPwdConfirm.value.trim() === ""){
+                pwdConfirmError.innerText = "비밀번호를 입력해주세요.";
+                checkVerifications[verificationType.PWD_CONFIRM] = false;
+            }else if(inputPwd.value.trim() !== inputPwdConfirm.value.trim()){ // 입력한 비밀번호와 비밀번호 확인 입력창에 입력한 비밀번호가 일치하느냐?
+                pwdConfirmError.innerText = "두 비밀번호가 일치하지 않습니다."
+                checkVerifications[verificationType.PWD_CONFIRM] = false;
+            }else{ // 비밀번호 확인 입력창이 비밀번호를 입력했고, 두 비밀번호가 일치하면?
+                pwdConfirmError.innerText = "";
+                checkVerifications[verificationType.PWD_CONFIRM] = true;
+            }
+        })
+
+        // -------------------- 직업 선택 검사 --------------------
+        // 직업 선택 드롭다운(<select> 요소)과 오류 메세지 보여질 <span> 요소 선택해서 가져온다.
+        const selectWork = document.getElementById("work");
+        const workError = document.getElementById("work-error");
+        
+        // <select> 요소 내부에 작성된 <option> 들 중에 하나를 선택하는 동작(change 이벤트) 등록 처리
+        selectWork.addEventListener("change", () => {
+
+            //1. 직업선택을 위해 3개의 <option> 이 있는데 하나도 선택하지 않았다면?
+            if(selectWork.value === "직업명"){
+                workError.innerText = "직업을 선택해주세요.";
+                checkVerifications[verificationType.JOB] = false;
+
+            //2. 직업선택을 위해 3개의 <option> 중에 하나라도 선택했다면?
+            }else{
+                workError.innerText = "";
+                checkVerifications[verificationType.JOB] = true;
+            }
+        });
+
+        // -------------------- 성별 선택 검사 --------------------
+        // 성별 선택은 라디오 버튼 2개로 구성되어 있고, 둘 다 name="sex" 로 동일한 이름을 가지고 있음
+        // document.getElementByName('sex') 메소드는
+        // 같은 name 속성 값 sex 를 가진 모든 요소를 Nodelist(유사배열) 에 담아 반환
+        // 요약: 라디오 버튼 요소 2개 Nodelist 유사배열에 담아 선택해오자
+        const radioGenders = document.getElementsByName('sex');
+
+        // <span id="gender-error">성별을 체크해주세요</span> 선택
+        const genderError = document.getElementsById("gender-error");
+
+        // NodeList 배열인 radioGenders 에 대해 forEach() 메소드 사용!
+        // -> 각 라디오 버튼에 change 이벤트를 반복해서 각각 등록 후
+        //    각 라디오 버튼이 선택될 때 마다 이벤트 처리 함수 실행되게 하자
+        radioGenders.forEach((element) => {
+            
+            element.addEventListener("change", () => {
+                
+                // change 이벤트가 발생하면(두 라디오 버튼 중 하나를 선택하면) 처리할 코드 작성
+                //1. 성별 선택하는 라디오 버튼 둘 다 선택하지 않았느냐?
+                if(!radioGenders[0].checked && !radioGenders[1].checked){
+                    
+                    genderError.innerText = "성별을 체크해주세요.";
+                    checkVerifications[verificationType.GENDER] = false;    // <-- 유효성 실패 값
+                }else{
+                    //2. 성별 선택하는 라디오 버튼 두 개 중 하나라도 선택이 되었느냐?
+                    genderError.innerText = "";
+                    checkVerifications[verificationType.GENDER] = true;     // <-- 유효성 통과 값
+                }
+            });
+        });
+        // -------------------- 취미 체크 검사 --------------------
+        // 취미 체크 박스들(name="hobby")을 모두 배열에 담아 선택해옵니다.
+        const checkHobbies = document.getElementsByName("hobby");
+        /*
+            [
+                <input type="checkbox" name="hobby" id="h1" value="독서" />,    0 index
+
+                <input type="checkbox" name="hobby" id="h2" value="등산" />,    1 index
+
+                <input type="checkbox" name="hobby" id="h3" value="낚시" />     2 index
+            ]
+        */
+       
+        const hobbyError = document.getElementById("hobby-error");
+
+
+
     </script>
-
-
 
 </body>
 
