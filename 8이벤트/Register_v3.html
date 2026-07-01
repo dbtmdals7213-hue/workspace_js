@@ -1,192 +1,274 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-    <meta charset="UTF-8">
-    <title>회원가입</title>
-    <style>
-        * {
-            box-sizing: border-box;
-        }
+    <head>
+        <meta charset="UTF-8">
+        <title>회원가입</title>
+        <style>
+            * {
+                box-sizing: border-box;
+            }
 
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background: #f3f6fb;
-            color: #222;
-        }
+            body {
+                margin: 0;
+                font-family: Arial, sans-serif;
+                background: #f3f6fb;
+                color: #222;
+            }
 
-        .signup-container {
-            max-width: 760px;
-            margin: 40px auto;
-            padding: 24px;
-        }
-
-        .signup-card {
-            background: #fff;
-            border-radius: 16px;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
-            padding: 24px;
-        }
-
-        .signup-title {
-            text-align: center;
-            font-size: 24px;
-            font-weight: 700;
-            margin-bottom: 20px;
-        }
-
-        .signup-table {
-            width: 100%;
-            border-collapse: collapse;
-            background: transparent;
-        }
-
-        .signup-table td {
-            padding: 10px;
-            border: 1px solid #dce4ef;
-            vertical-align: top;
-        }
-
-        .signup-table input[type="text"],
-        .signup-table input[type="password"],
-        .signup-table select,
-        .signup-table textarea {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #cfd8e3;
-            border-radius: 8px;
-            font-size: 14px;
-        }
-
-        .signup-table textarea {
-            min-height: 100px;
-            resize: vertical;
-        }
-
-        .signup-table button,
-        .signup-table input[type="button"] {
-            padding: 10px 20px;
-            border: none;
-            border-radius: 8px;
-            background: #2563eb;
-            color: #fff;
-            cursor: pointer;
-        }
-
-        .signup-table button:hover,
-        .signup-table input[type="button"]:hover {
-            background: #1d4ed8;
-        }
-
-        span {
-            color: red;
-        }
-
-        @media (max-width: 600px) {
             .signup-container {
-                padding: 16px;
-                margin: 20px auto;
+                max-width: 760px;
+                margin: 40px auto;
+                padding: 24px;
             }
 
             .signup-card {
-                padding: 16px;
+                background: #fff;
+                border-radius: 16px;
+                box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+                padding: 24px;
+            }
+
+            .signup-title {
+                text-align: center;
+                font-size: 24px;
+                font-weight: 700;
+                margin-bottom: 20px;
+            }
+
+            .signup-table {
+                width: 100%;
+                border-collapse: collapse;
+                background: transparent;
             }
 
             .signup-table td {
-                display: block;
-                width: 100%;
+                padding: 10px;
+                border: 1px solid #dce4ef;
+                vertical-align: top;
             }
-        }
-    </style>
-</head>
 
-<body>
-  <div class="signup-container">
-    <div class="signup-card">
-      <div class="signup-title">회원가입</div>
+            .signup-table input[type="text"],
+            .signup-table input[type="password"],
+            .signup-table select,
+            .signup-table textarea {
+                width: 100%;
+                padding: 10px;
+                border: 1px solid #cfd8e3;
+                border-radius: 8px;
+                font-size: 14px;
+            }
 
-      <table class="signup-table">
-        <tr>
-            <td colspan="2" align="center">회원가입</td>
-        </tr>
-        <tr>
-            <td>*이름</td>
-            <td>
-                <input type="text" name="uName" id="uName" placeholder="김개똥" />
-                <span id="name-error">이름을 입력해주세요</span>
-            </td>
-        </tr>
-        <tr>
-            <td>*ID</td>
-            <td>
-                <input type="text" name="uID" id="uID" placeholder="admin" />
-                <span id="id-error">ID를 입력해주세요</span>
-            </td>
-        </tr>
-        <tr>
-            <td>*비밀번호</td>
-            <td>
-                <input type="password" name="uPWD" id="uPWD" placeholder="1234" />
-                <span id="pwd-error">비밀번호를 입력해주세요</span>
-            </td>
-        </tr>
-        <tr>
-            <td>*비밀번호 확인</td>
-            <td>
-                <input type="password" name="uPWD_Confirm" id="uPWD_Confirm" />
-                <span id="pwd-confirm-error">비밀번호 확인란을 입력해주세요</span>
-            </td>
-        </tr>
-        <tr>
-            <td>*직업</td>
-            <td>
-                <select name="work" id="work">
-                    <option value="직업명" selected>직업명</option>
-                    <option value="기타">기타</option>
-                    <option value="회사원">회사원</option>
-                    <option value="학생">학생</option>
-                </select>
-                <span id="work-error">직업 하나를 선택해 주세요</span>
-            </td>
-        </tr>
-        <tr>
-            <td>*성별</td>
-            <td>
-                남자<input type="radio" name="sex" id="s1" value="male" />
-                여자<input type="radio" name="sex" id="s2" value="female" />
-                <span id="gender-error">성별을 체크해 주세요</span>
-            </td>
-        </tr>
-        <tr>
-            <td>*취미</td>
-            <td>
-                <input type="checkbox" name="hobby" id="h1" value="독서" />독서
-                <input type="checkbox" name="hobby" id="h2" value="등산" />등산
-                <input type="checkbox" name="hobby" id="h3" value="낚시" />낚시
-                <span id="hobby-error">취미를 하나 이상 체크 해 주세요</span>
-            </td>
-        </tr>
-        <tr>
-            <td>*가입동기</td>
-            <td>
-                <textarea rows="4" cols="50" name="motivation" id="motivation"
-                    placeholder="가입동기를 두 줄 이상 입력 하시오."></textarea>
-                <span id="motivation-error">가입 동기를 입력해주세요</span>
-            </td>
-        </tr>
-        <tr>
-            <td colspan="2" align="center">
-                <input type="button" value="가입" id="submit-btn" />
-            </td>
-        </tr>
-    </table>
+            .signup-table textarea {
+                min-height: 100px;
+                resize: vertical;
+            }
 
-    <script type="text/javascript">
+            .signup-table button,
+            .signup-table input[type="button"] {
+                padding: 10px 20px;
+                border: none;
+                border-radius: 8px;
+                background: #2563eb;
+                color: #fff;
+                cursor: pointer;
+            }
+
+            .signup-table button:hover,
+            .signup-table input[type="button"]:hover {
+                background: #1d4ed8;
+            }
+
+            span {
+                color: red;
+            }
+
+            @media (max-width: 600px) {
+                .signup-container {
+                    padding: 16px;
+                    margin: 20px auto;
+                }
+
+                .signup-card {
+                    padding: 16px;
+                }
+
+                .signup-table td {
+                    display: block;
+                    width: 100%;
+                }
+            }
+        </style>
+    </head>
+
+    <body>
+    <div class="signup-container">
+        <div class="signup-card">
+        <div class="signup-title">회원가입</div>
+
+        <table class="signup-table">
+            <tr>
+                <td colspan="2" align="center">회원가입</td>
+            </tr>
+            <tr>
+                <td>*이름</td>
+                <td>
+                    <input type="text" name="uName" id="uName" placeholder="김개똥" />
+                    <span id="name-error">이름을 입력해주세요</span>
+                </td>
+            </tr>
+            <tr>
+                <td>*ID</td>
+                <td>
+                    <input type="text" name="uID" id="uID" placeholder="admin" />
+                    <span id="id-error">ID를 입력해주세요</span>
+                </td>
+            </tr>
+            <tr>
+                <td>*비밀번호</td>
+                <td>
+                    <input type="password" name="uPWD" id="uPWD" placeholder="1234" />
+                    <span id="pwd-error">비밀번호를 입력해주세요</span>
+                </td>
+            </tr>
+            <tr>
+                <td>*비밀번호 확인</td>
+                <td>
+                    <input type="password" name="uPWD_Confirm" id="uPWD_Confirm" />
+                    <span id="pwd-confirm-error">비밀번호 확인란을 입력해주세요</span>
+                </td>
+            </tr>
+            <tr>
+                <td>*직업</td>
+                <td>
+                    <select name="work" id="work">
+                        <option value="직업명" selected>직업명</option>
+                        <option value="기타">기타</option>
+                        <option value="회사원">회사원</option>
+                        <option value="학생">학생</option>
+                    </select>
+                    <span id="work-error">직업 하나를 선택해 주세요</span>
+                </td>
+            </tr>
+            <tr>
+                <td>*성별</td>
+                <td>
+                    남자<input type="radio" name="sex" id="s1" value="male" />
+                    여자<input type="radio" name="sex" id="s2" value="female" />
+                    <span id="gender-error">성별을 체크해 주세요</span>
+                </td>
+            </tr>
+            <tr>
+                <td>*취미</td>
+                <td>
+                    <input type="checkbox" name="hobby" id="h1" value="독서" />독서
+                    <input type="checkbox" name="hobby" id="h2" value="등산" />등산
+                    <input type="checkbox" name="hobby" id="h3" value="낚시" />낚시
+                    <span id="hobby-error">취미를 하나 이상 체크 해 주세요</span>
+                </td>
+            </tr>
+            <tr>
+                <td>*가입동기</td>
+                <td>
+                    <textarea rows="4" cols="50" name="motivation" id="motivation"
+                        placeholder="가입동기를 두 줄 이상 입력 하시오."></textarea>
+                    <span id="motivation-error">가입 동기를 입력해주세요</span>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center">
+                    <input type="button" value="가입" id="submit-btn" />
+                </td>
+            </tr>
+        </table>
+
+        <script type="text/javascript">
+
+            /*
+                1) 이벤트 연결 함수: 웹 브라우저가 Register_v3.html 웹 문서의 모든 HTML 태그들 로드하면
+                                   호출되는 함수로 기능은 다양한 입력 요소를 선택해서 이벤트 등록 후
+                                   이벤트 핸들러 함수 호출!
+            
+            */
+            function setEventListeners(){
+                //1. 이름 입력 <input> 요소 선택하고, keyup 이벤트 등록 후 이벤트 핸들러 함수 호출
+                document.getElementById("uName").addEventListener("keyup", validateName);
+                //2. 아이디 입력 <input> 요소 선택하고, keyup 이벤트 등록 후 이벤트 핸들러 함수 호출
+                document.getElementById("uID").addEventListener("keyup", validateID);
+                //3. 비밀번호 입력 <input> 요소 선택하고, keyup 이벤트 등록 후 이벤트 핸들러 함수 호출
+                document.getElementById("uPWD").addEventListener("keyup", validatePassword);
+                //4. 비밀번호 확인 입력 <input> 요소 선택하고, keyup 이벤트 등록 후 이벤트 핸들러 함수 호출
+                document.getElementById("uPWD_Confirm").addEventListener("keyup", validatePasswordConfirmation);
+                //5. 직업 선택할 수 있는 <select> 요소 선택하고, change 이벤트 등록 후 이벤트 핸들러 함수 호출
+                document.getElementById("work").addEventListener("change", validateWork);
+                //6. 성별 선택할 수 있는 <input type="radio"> 요소들을 각각 선택하고, change 이벤트 등록 후 이벤트 핸들러 함수 호출
+                document.getElementById("s1").addEventListener("change", validateGender);
+                document.getElementById("s2").addEventListener("change", validateGender);
+                //7. 취미 체크할 수 있는 <input type="checkbox"> 요소들을 각각 선택하고, change 이벤트 등록 후 이벤트 핸들러 함수 호출
+                document.getElementById("h1").addEventListener("change", validateHobby);
+                document.getElementById("h2").addEventListener("change", validateHobby);
+                document.getElementById("h3").addEventListener("change", validateHobby);
+                //8. 가입 동기 한 줄 이상 입력할 수 있는 <textarea></textarea> 요소를 선택하고, keyup 이벤트 등록 후
+                //   실시간 입력한 값을 체크하기 위해 이벤트 핸들러 함수 호출
+                document.getElementById("motivation").addEventListener("keyup", validateMotivation);
+                //9. 최종 제출 버튼(가입)을 클릭하면 전체 입력을 검사하는 validateForm() 이벤트 핸들러 함수 호출
+                document.getElementById("submit-btn").addEventListener("keyup", validateForm);
+            }
+            
+            /*
+                2) 전체 폼 양식 화면의 입력을 검사하는 함수
+                    - 페이지의 모든 항목을 한 번에 검사
+                    - 각 항목 검사 함수들을 true 반환받으면(정상), false 반환받으면(실패)
+                    - 모든 함수가 true 반환받아야 valid 가 true 되고, 가입 진행(alert('가입요청')) 실행.
+            */
+            function validateForm(){
+
+                alert('가입 버특 클릭했음');
+            }
+
+            /* 3) 개별 유효성 검사 함수들 - 각 항목 별 검사 */
+            //3-1. 이름 검사
+            function validateName(){
+
+            }
+            //3-2. 아이디 검사
+            function validateID(){
+
+            }
+            //3-3. 비밀번호 검사
+            function validatePassword(){
+
+            }
+            //3-4. 비밀번호 확인 입력 검사(3-3. 비밀번호에서 입력한 비밀번호 같은지 검사)
+            function validatePasswordConfirmation(){
+
+            }
+            //3-5. 직업 선택 검사
+            function validateWork(){
+
+            }
+            //3-6. 
+           function validateGender(){
+
+           }
+           //3-7.
+           function validateHobby(){
+
+           }
+           //3-8.
+           function validateMotivation(){
+
+           }
 
 
-    </script>
-</body>
+
+
+
+            // 웹 브라우저가 Register_v3.html 웹 문서의 모든 HTML 태그를 로드하면 함수 호출!
+            setEventListeners();
+
+        </script>
+    </body>
 
 </html>
 
