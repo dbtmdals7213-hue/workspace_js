@@ -183,7 +183,18 @@
         </table>
 
         <script type="text/javascript">
-
+            /*
+                아래 코드는 "입력값 검사(Validation)"를 아주 세부적으로 처리합니다.
+                주석은 각 줄(혹은 블록)마다 붙여서 무슨 역할을 하는지, 왜 필요한지, 어떤 경우에 true/false가 되는지
+                가능한 한 쉽게(비전공자 관점) 풀어썼습니다.
+                
+                핵심 개념 요약:
+                    - "요소 찾기": document.getElementById("id") 같은 함수로 화면의 입력창을 찾는다.
+                    - "이벤트 연결": 사용자가 입력하거나 클릭할 때 '검사 함수'를 자동으로 실행하도록 연결한다.
+                    - "검사 함수": 입력값을 확인해서 문제가 있으면 화면에 오류문구를 보여주고 false를 반환한다.
+                    - "모두 통과하면": 최종적으로 true이면 가입 처리를 진행(여기서는 alert만 표시).
+	        */  
+            
             /*
                 1) 이벤트 연결 함수: 웹 브라우저가 Register_v3.html 웹 문서의 모든 HTML 태그들 로드하면
                                    호출되는 함수로 기능은 다양한 입력 요소를 선택해서 이벤트 등록 후
@@ -212,7 +223,7 @@
                 //   실시간 입력한 값을 체크하기 위해 이벤트 핸들러 함수 호출
                 document.getElementById("motivation").addEventListener("keyup", validateMotivation);
                 //9. 최종 제출 버튼(가입)을 클릭하면 전체 입력을 검사하는 validateForm() 이벤트 핸들러 함수 호출
-                document.getElementById("submit-btn").addEventListener("keyup", validateForm);
+                document.getElementById("submit-btn").addEventListener("click", validateForm);
             }
             
             /*
@@ -222,46 +233,100 @@
                     - 모든 함수가 true 반환받아야 valid 가 true 되고, 가입 진행(alert('가입요청')) 실행.
             */
             function validateForm(){
-
-                alert('가입 버특 클릭했음');
+                
+                
             }
 
             /* 3) 개별 유효성 검사 함수들 - 각 항목 별 검사 */
             //3-1. 이름 검사
             function validateName(){
-
+                /* 공통 검사 함수(validateField)를 재사용:
+                   "uName" 입력 값을 검사하고, 오류는 id="name-error" 에서 표시, 허용 길이는 3 ~ 7 자, 화면에 표시되는 이름은 "이름" */
+                return validateField("uName", "name-error", 3, 7, "이름");
             }
             //3-2. 아이디 검사
             function validateID(){
-
+                return validateField("uID", "id-error", 3, 7, "ID"); // 공통 검사 함수(validateField)를 재사용.
             }
             //3-3. 비밀번호 검사
             function validatePassword(){
-
+                return validateField("uPWD", "pwd-error", 3, 7, "비밀번호"); // 공통 검사 함수(validateField)를 재사용.
             }
             //3-4. 비밀번호 확인 입력 검사(3-3. 비밀번호에서 입력한 비밀번호 같은지 검사)
             function validatePasswordConfirmation(){
-
+                let inputPWD = document.getElementById("uPWD").value.trim(); // 입력한 비밀번호 얻기
+                let inputPWDConfirm = document.getElementById("uPWD_Confirm").value.trim(); // 입력한 비밀번호 확인 값 얻기
+                let errorMessage = document.getElementById("pwd-confirm-error"); // 오류 메세지 보여줄 <span></span> 요소 얻기
+                //경우1: 비밀번호 확인 값 입력하지 않았다면?
+                if(inputPWD === ''){
+                    errorMessage.innerHTML = "<strong>비밀번호 확인 입력 값 확인 바람</strong>";
+                    return false;
+                }
+                //경우2: 입력한 비밀번호와 입력한 비밀번호 확인 값이 같지 않느냐?
+                else if(inputPWD !== inputPWDConfirm){
+                    errorMessage.innerHTML = "<strong>입력한 비밀번호와 비밀번호 확인 값이 일치하지 않습니다.</strong>"
+                    return false;
+                }
+                //경우3: 정상
+                else{
+                    errorMessage.innerText = "";
+                    return true;
+                }
             }
             //3-5. 직업 선택 검사
             function validateWork(){
 
             }
-            //3-6. 
-           function validateGender(){
+            //3-6. 성별 검사(라디오 버튼)
+            function validateGender(){
 
-           }
-           //3-7.
-           function validateHobby(){
+            }
+            //3-7. 취미 검사(체크박스 여러 개 중 하나 이상 체크(선택))
+            function validateHobby(){
 
-           }
-           //3-8.
-           function validateMotivation(){
+            }
+            //3-8. 가입 동기 검사(두 줄 이상, 빈 줄 금지)
+            function validateMotivation(){
 
-           }
+            }
+            // ------------------------------------------------------------------------------------------------------------
 
+            /*
+                4) 공통 검사 함수: 여러 입력 요소(이름, 아이디, 비밀번호)에 재사용
 
+                매개변수 목록
+                    - inputId: 검사할 입력 요소의 id (예: "uName")
+                    - errorId: 오류 문구를 넣은 요소의 id (예: "name-error")
+                    - minLength, maxLength: 허용 글자 수 범위 값
+                    - fieldName: 화면에 보여줄 요소명(사용자에게 보여줄 문자열)
+            */
+            function validateField(inputId, errorId, minLength, maxLength, fieldName){
+                // 지정한 입력 요소에 입력한 문자열 가져오기
+                // 예: inputId 가 "uName" 이면 document.getElementById("uName").value 로 입력한 이름 문자열 얻기
+                let input = document.getElementById(inputId).value.trim();
 
+                // 오류 메세지를 보여줄 span 요소 영역 가져오기
+                // 예: errorId 가 "name-error" 이면 document.getElementById("name-error") 로
+                //     <span id="name-error">이름을 입력해주세요</span> 요소 가져오기
+                let errorMessage = document.getElementById(errorId);
+
+                //1) 빈 값 검사: 사용자가 아무것도 입력하지 않았는가?
+                if(input === ''){
+                    errorMessage.innerText = `${fieldName}를 입력해주세요.`; // 입력하지 않았으면? -> "이름을 입력해주세요"
+                    return false; // 유효성 검사 실패 판단할 값 반환
+                }
+                //2) 길이 검사: 글자 수가 최소/최대 범위 안에 들어가는가?
+                else if(input.length < minLength || input.length > maxLength){
+                    errorMessage.innerText = `${fieldName}은 ${minLength}자에서 ${maxLength}자 사이로 입력해주세요.`;
+                    return false;
+                }
+                //3) 유효성 검사 통과
+                else{
+                    //<span></span> 요소 사이에 에러 메세지를 제거해서 보여주기 위해 빈 문자열을 넣자.
+                    errorMessage.innerText = '';
+                    return true; // 유효성 검사 통과 판단 값 반환
+                }
+            }
 
 
             // 웹 브라우저가 Register_v3.html 웹 문서의 모든 HTML 태그를 로드하면 함수 호출!
