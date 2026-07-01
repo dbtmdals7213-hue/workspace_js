@@ -275,15 +275,68 @@
             }
             //3-5. 직업 선택 검사
             function validateWork(){
-
+                let selectWork = document.getElementById("work"); // <select id="work"></select> 요소 선택
+                let workError = document.getElementById("work-error"); //<span id="work-error"></span> 요소 선택
+                //<select> 요소 내부에 작성된 <option> 의 value 속성 값이 "직업명" 과 같다면?
+                //요약: 3개의 직업 선택을 하지 않은 경우
+                if(selectWork.value === '직업명'){
+                    // 사이트 이용자가 선택을 하지 않았음을 알려주는 메세지를 <span> 사이에 보여주자
+                    workError.innerText = '직업은 하나를 선택해주세요.';
+                    return false;
+                }else{ // 3개의 option 직업 선택 중 하나라도 선택한 경우
+                    // 사이트 이용자가 하나의 직업을 선택한 경우
+                    workError.innerText = '';
+                    return true;
+                }
             }
             //3-6. 성별 검사(라디오 버튼)
             function validateGender(){
-
+                // 오류 메세지를 보여줄 <span id="gender-error"></span> 요소 선택해서 genderError 변수에 저장
+                let genderError = document.getElementById("gender-error");
+                // 남자, 여자 라디오 <input type="radio"> 들을 모두 선택하지 않았다면?
+                if(!document.getElementById("s1").checked && !document.getElementById("s2").checked){
+                    // <span> 요소 사이에 '성별 두 개 중에 하나를 클릭해서 체크해주세요.' 문자열 넣어 보여주기
+                    genderError.innerText = '성별 두 개 중에 하나를 클릭해서 체크해주세요.';
+                    return false;
+                }
+                // 하나라도 라디오 <input type="radio"> 가 선택되어 있다면?
+                else{
+                    //<span> 요소 사이에 '' 를 넣어 보여주자
+                    genderError.innerText = '';
+                    return true;
+                }
             }
             //3-7. 취미 검사(체크박스 여러 개 중 하나 이상 체크(선택))
             function validateHobby(){
-
+                // 오류 메세지 표시할 <span id="hobby-error"></span> 요소 선택해서 가져옴
+                let hobbyError = document.querySelector("#hobby-error");
+                // name="hobby" 인 모든 체크박스 3쌍을 찾아 NodeList 배열에 담아 선택해서 가져옴.
+                let hobbies = document.querySelectorAll('input[name="hobby"]');
+                // [<input type="checkbox" ... 독서>, <input type="checkbox" ... 등산>, <input type="checkbox" ... 낚시>]
+                //               0                                 1                                2               <--- index
+                // "하나라도 체크가 되어 있는지" 판단 값 저장할 플래그 변수 선언
+                let ischecked = false;  // false 저장 -> 하나도 체크 되지 않음
+                                        // true 저장 -> 하나 이상 체크됨
+                // for 반복문으로 모든 체크박스를 하나씩 검사
+                // hobbies.length: 체크박스의 개수 3
+                // i는 0부터 시작해서 마지막 체크박스가 선택되어 있으면 true, 아니면 false
+                for(let i = 0; i < hobbies.length; i++){
+                    // hobbies[i].checked: 체크박스가 선택되어 있으면 true 반환하고, 아니면 false 를 반환하게 된다.
+                    if(hobbies[i].checked){ // -> 3개의 체크박스 중 하나라도 체크가 되어 있으면?
+                        ischecked = true; // 체크됨
+                        break; // 이미 하나가 true 이면 더 반복할 필요가 없으니 for 반복문 즉시 종료
+                    }
+                } // for
+                // 모두 체크 되지 않으면? <span></span> 사이에 오류 메세지 보여주자
+                if(!ischecked){
+                //  !false
+                //  true
+                    hobbyError.innerText = '취미 하나 이상을 체크해주세요.';
+                    return false;
+                }else{ // 하나 이상 체크되어 있다면? <span></span> 사이에 오류 메세지 제거를 위해 '' 문자열을 넣어주자
+                    hobbyError.innerText = '';
+                    return true;
+                }
             }
             //3-8. 가입 동기 검사(두 줄 이상, 빈 줄 금지)
             function validateMotivation(){
