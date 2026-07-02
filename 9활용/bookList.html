@@ -43,7 +43,50 @@
                 // 입력한 책 제목과 저자 정보를 텍스트노드로 하는 li 요소노드 생성
                 const item = document.createElement("li");
                 // <li></li>
-                
+
+                item.innerHTML = `${title.value} - ${author.value} <span class="delButton">삭제</span>`;
+                /*
+                    <li>
+                        자바책 - 저자명
+                        <span class="delButton">삭제</span>
+                    </li>
+                */
+                // <ul id="bookList"></ul> 사이에 새로 생성된 바로 위 <li>...</li> 한 쌍을 자식노드로 추가
+                bookList.appendChild(item);
+                /*
+                    <ul id="bookList">  <--- 기존에 위에 만들어져 있던 요소
+                        
+                        <li>    <--- 자바스크립트 코드에 의해 만들어진 동적 요소
+                            자바책 - 저자명
+                            <span class="delButton">삭제</span>
+                        </li>
+                    
+                    </ul>
+                */
+
+                // 책 제목 입력하는 <input> 에 입력된 값 대신 "" 빈 공백 문자열 설정하여 다른 책 제목을 입력할 수 있도록 유도
+                title.value = "";
+                // 저자명 입력하는 <input> 에 입력된 값 대신 "" 빈 공백 문자열 설정하여 다른 저자명을 입력할 수 있도록 유도
+                author.value = "";
+
+                // 동적으로 생성한 <span class="delButton">삭제</span> 모두를 배열에 담아 선택해옵니다.
+                const delButtons = document.querySelectorAll(".delButton");
+
+                // delButtons 배열에 저장된 span 을 차례대로 반복해서 얻어 click 이벤트 등록하고 처리
+                for(let delButton of delButtons){
+
+                    delButton.addEventListener("click", function(){
+
+                        // 해석1. this -> click 이벤트가 발생한 span 요소 하나
+                        // 해석2. this.parentNode -> click 이벤트가 발생한 span 의 상위 li 요소 하나
+                        let list = this.parentNode;
+                        
+                        // 해석3. this.parentNode.parentNode -> click 이벤트가 발생한 span 의 상위 li 의 상위 ul 요소 하나
+                        // 해석4. this.parentNode.parentNode.removeChild(<li>...</li>)
+                        // -> click 이벤트가 발생한 span 의 상위 li 의 상위 ul 사이에 작성된 자식 <li>...</li> 삭제
+                        list.parentNode.removeChild(list);
+                    });
+                }
             });
         </script>
     </body>
