@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+
+        <link rel="stylesheet" href="css/carousel.css">
+
+    </head>
+    <body>
+        <p>좌/우 화살표를 눌러보세요</p>
+
+        <!-- 캐러셀 전체 영역 -->
+        <div id="container">
+            <!-- 왼쪽 화살표 < <div> 영역 -->
+            <div class='arrow' id="left">&lang;</div>
+
+            <!-- 오른쪽 화살표 > <div> 영역 -->
+            <div class='arrow' id="right">&rang;</div>
+
+        </div>
+
+        <script>
+            /* 캐러셀 전체 영역 <div id="container"></div> 요소 선택 */
+            const container = document.querySelector("#container");
+
+            /* 캐러셀 전체 영역 내부에 보여질 이미지명을 문자열 형태로 배열을 생성해서 저장 */
+            const pics = ['pic-1.jpg', 'pic-2.jpg', 'pic-3.jpg', 'pic-4.jpg', 'pic-5.jpg'];
+            //                 0            1            2            3            4        <--- index
+
+            /* 캐러셀 전체 영역 <div id="container"></div> 에 첫 화면에 보여질 이미지를 pics[0] 배열 칸의 이미지로 표시 */
+            container.style.backgroundImage = `url(images/${pics[0]})`;
+
+            /* < 화살표 <div class='arrow'> 와 > 화살표 <div class='arrow'> 두 쌍을 모두 새 배열에 담아 선택 */
+            const arrows = document.querySelectorAll(".arrow");
+            /*
+                arrows 배열
+                    [
+                      <div class='arrow' id="left">&lang;</div>,    <--- 0 index
+                      <div class='arrow' id="right">&rang;</div>    <--- 1 index
+                    ]
+            */
+
+
+        </script>
+
+    </body>
+</html>
