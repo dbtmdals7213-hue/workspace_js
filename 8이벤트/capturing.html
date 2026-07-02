@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+
+        <link rel="stylesheet" href="css/event.css">
+    </head>
+    <body>
+        BODY
+        <div>
+            DIV
+            <section>
+                SECTION
+                <p>
+                    P
+                </p>
+            </section>
+        </div>
+        <script>
+            //1. 모든 html 요소들을 NodeList 유사배열에 담아 선택해옵니다.
+            const elements = document.querySelectorAll("*");
+
+            //2. for of 반복문을 이용해 선택한 모든 html 요소들을 NodeList 유사배열에서 반복해서 얻어 사용
+            for(let element of elements){
+
+                // 반복 실행 될 코드
+                // -> click 이벤트 등록 후 이벤트 핸들러 함수 실행되게 작성
+                element.addEventListener("click", function(event){
+
+                    // console.log(event.target.tagName);       // BODY
+                                                                // BODY
+                    console.log(event.currentTarget.tagName);   // HTML
+                                                                // BODY
+
+                }, true); // true -> 캡처링 이벤트 전파
+            }
+
+        </script>
+    </body>
+</html>
