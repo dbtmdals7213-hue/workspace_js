@@ -14,10 +14,10 @@
         <!-- 캐러셀 전체 영역 -->
         <div id="container">
             <!-- 왼쪽 화살표 < <div> 영역 -->
-            <div class='arrow' id="left">&lang;</div>
+            <div class="arrow" id="left">&lang;</div>
 
             <!-- 오른쪽 화살표 > <div> 영역 -->
-            <div class='arrow' id="right">&rang;</div>
+            <div class="arrow" id="right">&rang;</div>
 
         </div>
 
@@ -32,18 +32,57 @@
             /* 캐러셀 전체 영역 <div id="container"></div> 에 첫 화면에 보여질 이미지를 pics[0] 배열 칸의 이미지로 표시 */
             container.style.backgroundImage = `url(images/${pics[0]})`;
 
-            /* < 화살표 <div class='arrow'> 와 > 화살표 <div class='arrow'> 두 쌍을 모두 새 배열에 담아 선택 */
+            /* < 화살표 <div class="arrow"> 와 > 화살표 <div class="arrow"> 두 쌍을 모두 새 배열에 담아 선택 */
             const arrows = document.querySelectorAll(".arrow");
             /*
                 arrows 배열
                     [
-                      <div class='arrow' id="left">&lang;</div>,    <--- 0 index
-                      <div class='arrow' id="right">&rang;</div>    <--- 1 index
+                      <div class="arrow" id="left">&lang;</div>,    <--- 0 index
+                      <div class="arrow" id="right">&rang;</div>    <--- 1 index
                     ]
             */
 
+            let i = 0; // pics 배열 index
 
+            /* arrows 배열의 각 칸에 저장된 <div> 요소 개수 만큼 반복해서 각 <div> 요소에 click 이벤트 등록 후 처리 */
+            arrows.forEach(function(arrow){
+                
+                arrow.addEventListener("click", function(event){
+                    // event.target 속성 호출하면? click 이벤트가 발생한 <div> 요소 자체를 반환
+                    // event.target.id 속성 호출하면? click 이벤트가 발생한 <div> 요소의 id 속성 값 "left", "right" 반환
+                    
+                    // 왼쪽 < 화살표 <div class="arrow" id="left"> 요소 영역을 클릭했다면?
+                    if(event.target.id === "left"){
+
+                        i--; // 이전 이미지 명이 저장된 pics 배열의 index 위치 번호를 1차감해서 i 변수에 저장
+
+                        if(i < 0) i = pics.length - 1; // pics 배열의 4 index 칸에 저장된 이미지 명을 아래 url 함수의 경로로 사용하기 위해 설정
+
+                    }else if(event.target.id === "right"){ // 오른쪽 > 화살표 <div class="arrow" id="left"> 요소 영역을 클릭했다면?
+
+                        i++; // 다음 이미지 명이 저장된 pics 배열의 index 위치 번호를 1증가해서 i 변수에 저장
+                        
+                        if(i >= pics.length){ // pics 배열에 저장된 마지막 이미지 명이라면?
+
+                            i = 0; // pics 배열의 0 index 칸에 저장된 이미지 명을 아래 url 함수의 경로로 사용하기 위해 설정
+                        }
+                    }
+
+                    /* 캐러셀 전체 영역 <div id="container"></div> 에 배경 이미지를 pics 배열에 저장된 이미지 명을 사용해 보여주자 */
+                    container.style.backgroundImage = `url(images/${pics[i]})`;
+                });
+            });
         </script>
+        <!--
+            url()이란? css에서 배경이미지나 다른 리소스를 가져올떄 사용하는 함수
+                        자바스크립트에서는 CSS의 
+                        backgroundImage, listStyleImage, cursor속성등에
+                        주소값을 설정할때 사용됩니다.
+            
+            url('이미지경로');
+            `url('이미지 경로')`;
+            "url('이미지 경로')";
+        -->
 
     </body>
 </html>
