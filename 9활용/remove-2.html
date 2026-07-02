@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <h1>Web Programming</h1>
+        <ul id="items">
+            <li>HTML</li>
+            <li>CSS</li>
+            <li>Javascript</li>
+        </ul>
+
+        <script>
+            // [ <li>HTML</li>, <li>CSS</li>, <li>Javascript</li> ];
+            //         0             1                 2            <--- index
+            const items = document.querySelectorAll("li");
+
+            for(let item of items){
+
+                item.addEventListener("click", function(){
+                    
+                    // this: 이벤트가 발생한 대상요소를 선택해오는 예약어.
+                    // this.parentNode: 이벤트가 발생한 대상요소의 부모 요소 선택
+                    // this.parentNode.removeChild(this);: 부모 요소 사이에 작성된 이벤트가 발생한 자식 요소 삭제
+
+                    //방법1.
+                    // this.parentNode.removeChild(this);
+
+                    //방법2.
+                    this.remove(this);
+                });
+            }
+        </script>
+    </body>
+</html>
